@@ -28,10 +28,6 @@ void cCamera::Setup()
 	this->CreateMatProj();
 }
 
-void cCamera::Release()
-{
-}
-
 void cCamera::Update()
 {
 	this->ControlCamDistance();
