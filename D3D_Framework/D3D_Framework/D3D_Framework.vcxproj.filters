@@ -241,11 +241,8 @@
     <Filter Include="소스 파일\cMainGame\cOption\cOptionUI">
       <UniqueIdentifier>{dd8a3d57-1063-4b3b-8644-e3e95d783013}</UniqueIdentifier>
     </Filter>
-    <Filter Include="D3DGameFramework\cCamera\cMapCamera">
-      <UniqueIdentifier>{39175030-be8b-40d9-95b7-339ca2247fa9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="D3DGameFramework\cCamera\cGameCamera">
-      <UniqueIdentifier>{0a40b44d-10f5-4d02-baee-10fd7642c5a1}</UniqueIdentifier>
+    <Filter Include="D3DGameFramework\cGlobalData">
+      <UniqueIdentifier>{216becb2-7479-4b15-9fbb-76c39f21d0f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -465,12 +462,6 @@
     <ClInclude Include="cOptionUI.h">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
     </ClInclude>
-    <ClInclude Include="cMapCamera.h">
-      <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
-    </ClInclude>
-    <ClInclude Include="cGameCamera.h">
-      <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -664,12 +655,6 @@
     </ClCompile>
     <ClCompile Include="cOptionUI.cpp">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
-    </ClCompile>
-    <ClCompile Include="cMapCamera.cpp">
-      <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
-    </ClCompile>
-    <ClCompile Include="cGameCamera.cpp">
-      <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
