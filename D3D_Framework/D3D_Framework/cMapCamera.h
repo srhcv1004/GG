@@ -15,5 +15,7 @@ public:
 
 	void Setup();
 	void Update();
+
+	void ControlCamPosition();
 };
 

@@ -26,8 +26,5 @@ protected:
 public:
 	cCamera();
 	virtual ~cCamera();
-
-	void Setup();
-	void Update();
 };
 

@@ -49,3 +49,11 @@ void cMapCamera::Update()
 
 	this->CreateMatView();
 }
+
+void cMapCamera::ControlCamPosition()
+{
+	if (D_KEYMANAGER->IsStayKeyDown('W'))
+	{
+
+	}
+}
