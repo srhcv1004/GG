@@ -244,6 +244,9 @@
     <Filter Include="D3DGameFramework\cGlobalData">
       <UniqueIdentifier>{216becb2-7479-4b15-9fbb-76c39f21d0f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\cMainGame\Monster">
+      <UniqueIdentifier>{a31196d8-ee48-4b25-885a-dc8578cb14de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -462,6 +465,18 @@
     <ClInclude Include="cOptionUI.h">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
     </ClInclude>
+    <ClInclude Include="cGameCamera.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapCamera.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkinnedMonster.h">
+      <Filter>D3DGameFramework\cXFile\cSkinnedMesh\cControlSkinnedMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="cXMonster.h">
+      <Filter>D3DGameFramework\cXFile\cCharacter\cXPlayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -655,6 +670,18 @@
     </ClCompile>
     <ClCompile Include="cOptionUI.cpp">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameCamera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapCamera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkinnedMonster.cpp">
+      <Filter>D3DGameFramework\cXFile\cSkinnedMesh\cControlSkinnedMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="cXMonster.cpp">
+      <Filter>D3DGameFramework\cXFile\cCharacter\cXPlayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
