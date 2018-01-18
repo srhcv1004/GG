@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "cInGame.h"
-#include "cCamera.h"
+#include "cGameCamera.h"
 #include "cGrid.h"
 #include "cSprite.h"
 #include "cXPlayer.h"
@@ -18,7 +18,7 @@ cInGame::~cInGame()
 
 void cInGame::Setup()
 {
-	m_pCamera = new cCamera();
+	m_pCamera = new cGameCamera();
 	m_pCamera->Setup();
 
 	m_pLineGrid = new cLineGrid();
@@ -30,7 +30,6 @@ void cInGame::Setup()
 
 void cInGame::Release()
 {
- 	D_SAFE_RELEASE(m_pCamera);
 	D_SAFE_DELETE(m_pCamera);
 
 	D_SAFE_RELEASE(m_pLineGrid);

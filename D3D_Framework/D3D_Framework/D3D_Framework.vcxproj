@@ -177,6 +177,7 @@
     <ClInclude Include="cEquip.h" />
     <ClInclude Include="cFont.h" />
     <ClInclude Include="cFontManager.h" />
+    <ClInclude Include="cGameCamera.h" />
     <ClInclude Include="cGameNode.h" />
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cImageManager.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="cMainMenu.h" />
     <ClInclude Include="cCubeManNpc.h" />
     <ClInclude Include="cMainMenuUI.h" />
+    <ClInclude Include="cMapCamera.h" />
     <ClInclude Include="cMapTool.h" />
     <ClInclude Include="cObjLoadManager.h" />
     <ClInclude Include="commonDF.h" />
@@ -250,6 +252,7 @@
     <ClCompile Include="cEquip.cpp" />
     <ClCompile Include="cFont.cpp" />
     <ClCompile Include="cFontManager.cpp" />
+    <ClCompile Include="cGameCamera.cpp" />
     <ClCompile Include="cGameNode.cpp" />
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cImageManager.cpp" />
@@ -264,6 +267,7 @@
     <ClCompile Include="cCubeManNpc.cpp" />
     <ClCompile Include="cCubeManPlayer.cpp" />
     <ClCompile Include="cMainMenuUI.cpp" />
+    <ClCompile Include="cMapCamera.cpp" />
     <ClCompile Include="cMapTool.cpp" />
     <ClCompile Include="cObjLoadManager.cpp" />
     <ClCompile Include="cOption.cpp" />

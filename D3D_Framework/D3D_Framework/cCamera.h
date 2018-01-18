@@ -2,8 +2,8 @@
 
 class cCamera
 {
-private:
-	D3DXVECTOR3												m_vEye;
+protected:
+	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vEye, VecEye);
 	D3DXVECTOR3												m_vLookAt;
 	D3DXVECTOR3												m_vUp;
 
@@ -13,22 +13,18 @@ private:
 	float													m_fCamRotY;
 	bool													m_bIsLButtonDown;
 
-private:
+protected:
 	float													m_fCamDistance;
 
-private:
-	void CreateMatView();
-	void CreateMatProj();
+protected:
+	virtual void CreateMatView();
+	virtual void CreateMatProj();
 
-	void ControlCamDistance();
-	void ControlCamRotation();
+	virtual void ControlCamDistance();
+	virtual void ControlCamRotation();
 
 public:
 	cCamera();
-	~cCamera();
-
-	void Setup();
-	void Release();
-	void Update();
+	virtual ~cCamera();
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "cGameNode.h"
 
-class cCamera;
+class cGameCamera;
 class iGrid;
 
 class cXPlayer;
@@ -9,7 +9,7 @@ class cXPlayer;
 class cInGame : public cGameNode
 {
 private:
-	cCamera*												m_pCamera;
+	cGameCamera*											m_pCamera;
 
 private:
 	iGrid*													m_pLineGrid;

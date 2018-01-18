@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "cMapTool.h"
 #include "cGrid.h"
-#include "cCamera.h"
+#include "cMapCamera.h"
 
 cMapTool::cMapTool()
 	: m_pCamera(NULL)
@@ -12,14 +12,13 @@ cMapTool::cMapTool()
 
 cMapTool::~cMapTool()
 {
-	if (m_pCamera)
-		m_pCamera->Release();
+	D_SAFE_DELETE(m_pCamera);
 	D_SAFE_RELEASE(m_mapMesh);
 }
 
 void cMapTool::Setup()
 {
-	m_pCamera = new cCamera();
+	m_pCamera = new cMapCamera();
 	m_pCamera->Setup();
 
 	SetLight();
@@ -50,7 +49,7 @@ void cMapTool::SetMapGrid()
 		{
 			ST_PNT_VERTEX v;
 
-			v.p = D3DXVECTOR3(-20 + j * D_MAPTILESIZE, 0, -20 + i * D_MAPTILESIZE);
+			v.p = D3DXVECTOR3(j * D_MAPTILESIZE, 0, i * D_MAPTILESIZE);
 			v.n = D3DXVECTOR3(0, 1, 0);
 			v.t = D3DXVECTOR2(0, 0);
 			vecVertex.push_back(v);
