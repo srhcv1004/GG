@@ -3,19 +3,14 @@
 
 class cMapCamera : public cCamera
 {
+private:
+	void ControlCamPosition();
+
 public:
 	cMapCamera();
 	virtual ~cMapCamera();
 
-	virtual void CreateMatView();
-	virtual void CreateMatProj();
-
-	virtual void ControlCamDistance();
-	virtual void ControlCamRotation();
-
-	void Setup();
-	void Update();
-
-	void ControlCamPosition();
+	virtual void Setup();
+	virtual void Update();
 };
 
