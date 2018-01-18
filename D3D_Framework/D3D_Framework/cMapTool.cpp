@@ -6,6 +6,7 @@
 cMapTool::cMapTool()
 	: m_pCamera(NULL)
 {
+	D3DXMatrixIdentity(&m_matWorld);
 	ZeroMemory(&m_mtrl, sizeof(D3DMATERIAL9));
 }
 
@@ -49,7 +50,7 @@ void cMapTool::SetMapGrid()
 		{
 			ST_PNT_VERTEX v;
 
-			v.p = D3DXVECTOR3(-50 + j * D_MAPTILESIZE, 0, -50 + i * D_MAPTILESIZE);
+			v.p = D3DXVECTOR3(-20 + j * D_MAPTILESIZE, 0, -20 + i * D_MAPTILESIZE);
 			v.n = D3DXVECTOR3(0, 1, 0);
 			v.t = D3DXVECTOR2(0, 0);
 			vecVertex.push_back(v);
