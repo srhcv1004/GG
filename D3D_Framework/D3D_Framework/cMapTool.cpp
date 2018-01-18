@@ -5,6 +5,7 @@
 
 cMapTool::cMapTool()
 	: m_pCamera(NULL)
+	, m_vecPos(0, 0, 0)
 {
 	D3DXMatrixIdentity(&m_matWorld);
 	ZeroMemory(&m_mtrl, sizeof(D3DMATERIAL9));

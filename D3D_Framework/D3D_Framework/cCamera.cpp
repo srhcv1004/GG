@@ -17,6 +17,25 @@ cCamera::~cCamera()
 {
 }
 
+void cCamera::Setup()
+{	
+	// ----------------------------------------------------------------------------------------------------
+	m_fCamDistance = 15.5F;
+	m_vEye = D3DXVECTOR3(0.F, m_fCamDistance, -m_fCamDistance);
+	m_vUp = D3DXVECTOR3(0.F, 1.F, 0.F);
+	// ----------------------------------------------------------------------------------------------------
+
+	this->CreateMatProj();
+}
+
+void cCamera::Update()
+{
+	this->ControlCamDistance();
+	this->ControlCamRotation();
+
+	this->CreateMatView();
+}
+
 void cCamera::CreateMatView()
 {
 	D3DXMATRIXA16 matView;

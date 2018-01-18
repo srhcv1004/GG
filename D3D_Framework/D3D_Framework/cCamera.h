@@ -17,14 +17,17 @@ protected:
 	float													m_fCamDistance;
 
 protected:
-	virtual void CreateMatView();
-	virtual void CreateMatProj();
+	void CreateMatView();
+	void CreateMatProj();
 
-	virtual void ControlCamDistance();
-	virtual void ControlCamRotation();
+	void ControlCamDistance();
+	void ControlCamRotation();
 
 public:
 	cCamera();
 	virtual ~cCamera();
+
+	virtual void Setup();
+	virtual void Update();
 };
 

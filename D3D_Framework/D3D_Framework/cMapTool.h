@@ -1,7 +1,7 @@
 #pragma once
 #include "cGameNode.h"
 
-class cMapCamera;
+class cCamera;
 
 class cMapTool : public cGameNode
 {
@@ -20,10 +20,12 @@ private:
 	};
 
 private:
-	cMapCamera*												m_pCamera;
+	cCamera*												m_pCamera;
 	LPD3DXMESH												m_mapMesh;
 	D3DXMATRIXA16											m_matWorld;
 	D3DMATERIAL9											m_mtrl;
+
+	D3DXVECTOR3												m_vecPos;
 
 public:
 	cMapTool();

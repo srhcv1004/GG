@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -23,7 +23,7 @@
     <ProjectGuid>{C8018301-02FC-4D6B-9C65-573989B98208}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>D3DFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -208,6 +208,7 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSingletonBase.h" />
     <ClInclude Include="cSkinnedMesh.h" />
+    <ClInclude Include="cSkinnedMonster.h" />
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cSprite.h" />
     <ClInclude Include="cSpriteManager.h" />
@@ -220,6 +221,7 @@
     <ClInclude Include="cUISprite.h" />
     <ClInclude Include="cUIText.h" />
     <ClInclude Include="cSkinnedPlayer.h" />
+    <ClInclude Include="cXMonster.h" />
     <ClInclude Include="cXPlayer.h" />
     <ClInclude Include="D3DMain.h" />
     <ClInclude Include="cImage.h" />
@@ -278,6 +280,7 @@
     <ClCompile Include="cRndManager.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
+    <ClCompile Include="cSkinnedMonster.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cSprite.cpp" />
     <ClCompile Include="cSpriteManager.cpp" />
@@ -290,6 +293,7 @@
     <ClCompile Include="cUISprite.cpp" />
     <ClCompile Include="cUIText.cpp" />
     <ClCompile Include="cSkinnedPlayer.cpp" />
+    <ClCompile Include="cXMonster.cpp" />
     <ClCompile Include="cXPlayer.cpp" />
     <ClCompile Include="D3DMain.cpp" />
     <ClCompile Include="cImage.cpp" />
