@@ -241,6 +241,9 @@
     <Filter Include="소스 파일\cMainGame\cOption\cOptionUI">
       <UniqueIdentifier>{dd8a3d57-1063-4b3b-8644-e3e95d783013}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3DGameFramework\cGlobalData">
+      <UniqueIdentifier>{216becb2-7479-4b15-9fbb-76c39f21d0f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

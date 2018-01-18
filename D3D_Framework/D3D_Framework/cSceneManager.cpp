@@ -63,6 +63,9 @@ void cSceneManager::ChangeScene(std::string strSceneKey)
 
 	mapFind->second;
 	mapFind->second->Setup();
-	if (m_pCurScene) m_pCurScene->Release();
+	if (m_pCurScene)
+	{
+		m_pCurScene->Release();
+	}
 	m_pCurScene = mapFind->second;
 }
