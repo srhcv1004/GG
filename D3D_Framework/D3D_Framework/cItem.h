@@ -10,13 +10,11 @@ protected:
 protected:
 	float													m_fAbility;
 
-
 public:
 	cItem();
 	~cItem();
 
 	void Setup();
-	void Release();
 	void Update();
 	void Render();
 };

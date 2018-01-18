@@ -13,8 +13,6 @@ public:
 	~cItemManager();
 
 	void Setup();
-	void Release();
-
 	void AddItem(cItem* pItem);
 };
 

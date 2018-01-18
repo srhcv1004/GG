@@ -13,10 +13,6 @@ void cItemManager::Setup()
 {
 }
 
-void cItemManager::Release()
-{
-}
-
 void cItemManager::AddItem(cItem* pItem)
 {
 }
