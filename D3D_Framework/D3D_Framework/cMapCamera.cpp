@@ -11,49 +11,33 @@ cMapCamera::~cMapCamera()
 {
 }
 
-void cMapCamera::CreateMatView()
-{
-	cCamera::CreateMatView();
-}
-
-void cMapCamera::CreateMatProj()
-{
-	cCamera::CreateMatProj();
-}
-
-void cMapCamera::ControlCamDistance()
-{
-	cCamera::ControlCamDistance();
-}
-
-void cMapCamera::ControlCamRotation()
-{
-	cCamera::ControlCamRotation();
-}
-
 void cMapCamera::Setup()
 {
-	// ----------------------------------------------------------------------------------------------------
-	m_fCamDistance = 15.5F;
-	m_vEye = D3DXVECTOR3(0.F, m_fCamDistance, -m_fCamDistance);
-	m_vUp = D3DXVECTOR3(0.F, 1.F, 0.F);
-	// ----------------------------------------------------------------------------------------------------
-
-	this->CreateMatProj();
+	cCamera::Setup();
 }
 
 void cMapCamera::Update()
 {
-	this->ControlCamDistance();
-	this->ControlCamRotation();
-
-	this->CreateMatView();
+	cCamera::Update();
+	ControlCamPosition();
 }
 
 void cMapCamera::ControlCamPosition()
 {
 	if (D_KEYMANAGER->IsStayKeyDown('W'))
 	{
-
+		exit(0);
+	}
+	if (D_KEYMANAGER->IsStayKeyDown('S'))
+	{
+		m_vEye.z -= 1.f;
+	}
+	if (D_KEYMANAGER->IsStayKeyDown('A'))
+	{
+		m_vEye.x -= 1.f;
+	}
+	if (D_KEYMANAGER->IsStayKeyDown('D'))
+	{
+		m_vEye.x += 1.f;
 	}
 }
