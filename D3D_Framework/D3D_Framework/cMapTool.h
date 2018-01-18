@@ -2,27 +2,43 @@
 #include "cGameNode.h"
 
 class cCamera;
-class cLineGrid;
 
 class cMapTool : public cGameNode
 {
 private:
+	struct ST_MAPTILE
+	{
+		ST_PNT_VERTEX	stVertex;
+		float			fHeightY;
+	};
+
+	struct ST_BRUSH
+	{
+		D3DXVECTOR3		vPick;
+		float			fRadius;
+		//....또 뭐가 필요할까..
+	};
+
+private:
 	cCamera*												m_pCamera;
-
-private:
-	cLineGrid*												m_pGrid;
-
-private:
-	void Save();
-	void Load();
+	LPD3DXMESH												m_mapMesh;
+	D3DXMATRIXA16											m_matWorld;
+	D3DMATERIAL9											m_mtrl;
 
 public:
 	cMapTool();
 	virtual ~cMapTool();
 
 	virtual void Setup();
-	virtual void Release();
 	virtual void Update();
 	virtual void Render();
+
+	void SetMapGrid();
+	void SetMaterial();
+	void SetLight();
+	void RenderMapGrid();
+
+	void Save();
+	void Load();
 };
 
