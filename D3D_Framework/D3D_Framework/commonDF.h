@@ -21,7 +21,11 @@
 #define D_GRIDHALFSIZEY										D_TILENUMY * D_TILESIZEY / 2.F
 #define D_GRIDHALFSIZEZ										D_TILENUMZ * D_TILESIZEZ / 2.F
 
-//
+//youngju ==============================================================================================
+#define D_MAPTILENUMX										100
+#define D_MAPTILENUMZ										100
+#define D_MAPTILESIZE										0.2f
+//======================================================================================================
 
 // Top level category ID's
 #define ID_SCENE				("*SCENE")				// : 이거 {} 블럭 안쪽의 내용은 사용안하므로 생략하는 기준으로 사용한다. 
