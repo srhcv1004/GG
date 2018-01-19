@@ -50,7 +50,7 @@ void cMapTool::SetMapGrid()
 		{
 			ST_PNT_VERTEX v;
 
-			v.p = D3DXVECTOR3(j * D_MAPTILESIZE, 0, i * D_MAPTILESIZE);
+			v.p = D3DXVECTOR3(j * D_MAPTILESIZE - D_MAPHALFSIZEX, 0, i * D_MAPTILESIZE - D_MAPHALFSIZEZ);
 			v.n = D3DXVECTOR3(0, 1, 0);
 			v.t = D3DXVECTOR2(0, 0);
 			vecVertex.push_back(v);
