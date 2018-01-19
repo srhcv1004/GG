@@ -14,7 +14,6 @@ cRay::~cRay()
 cRay cRay::RayAtViewSpace(int nScreenX, int nScreenY)
 {
 	D3DVIEWPORT9 sD3DVp;
-	ZeroMemory(&sD3DVp, sizeof(D3DVIEWPORT9));
 	D_DEVICE->GetViewport(&sD3DVp);
 
 	D3DXMATRIXA16 matProj;
@@ -35,7 +34,7 @@ cRay cRay::RayAtWorldSpace(int nScreenX, int nScreenY)
 	
 	D3DXMATRIXA16 matWorld, matInvWorld;
 
-	D_DEVICE->GetTransform(D3DTS_WORLD, &matWorld);
+	D_DEVICE->GetTransform(D3DTS_VIEW, &matWorld);
 	D3DXMatrixInverse(&matInvWorld, NULL, &matWorld);
 
 	D3DXVec3TransformCoord(&r.m_vPos, &r.m_vPos, &matInvWorld);

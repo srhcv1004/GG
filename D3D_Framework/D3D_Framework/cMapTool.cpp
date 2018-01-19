@@ -28,8 +28,6 @@ void cMapTool::Setup()
 	m_pHeightMap->Setup();
 
 	SetLight();
-
-	D3DXCreateSphere(D_DEVICE, 0.1f, 10, 10, &m_pMesh, 0);
 }
 
 void cMapTool::Update()
@@ -37,11 +35,7 @@ void cMapTool::Update()
 	if (m_pCamera)
 		m_pCamera->Update();
 
-
-	if (D_KEYMANAGER->IsOnceKeyDown(VK_RBUTTON))
-	{
-		Picking();
-	}
+	Picking();
 }
 
 void cMapTool::Render()
@@ -101,13 +95,11 @@ void cMapTool::Picking()
 
 			if (b1)
 			{
-				//exit(0);
 				m_vBrushPos = vPickedPos1;
 				return;
 			}
 			if (b2)
 			{
-				exit(0);
 				m_vBrushPos = vPickedPos2;
 				return;
 			}
@@ -117,56 +109,56 @@ void cMapTool::Picking()
 
 void cMapTool::DrawBrush()
 {
-	//// 점 개수가 많을수록 원이 더 동그란 모양이 됨
-	//int nNumCircleDot = 50; 
+	// 점 개수가 많을수록 원이 더 동그란 모양이 됨
+	int nNumCircleDot = 50; 
 
-	//float fRadian = D3DX_PI * 2.0f / nNumCircleDot;
+	float fRadian = D3DX_PI * 2.0f / nNumCircleDot;
 
-	////CellSize가 커질수록 브러쉬의 크기가 커짐
-	//float fBrushSize = 1.0f * m_dwCellSize;
+	//CellSize가 커질수록 브러쉬의 크기가 커짐
+	float fBrushSize = 1.0f * m_dwCellSize;
 
-	////브러쉬를 그릴 구조체
-	//ST_BRUSH brushLine[2];
+	//브러쉬를 그릴 구조체
+	ST_BRUSH brushLine[2];
 
-	////??????????????
-	//D3DXVECTOR3 vCurPos(1.0f, 0.0f, 0.0f);
+	//??????????????
+	D3DXVECTOR3 vCurPos(1.0f, 0.0f, 0.0f);
 
-	////새로운 포스
-	//D3DXVECTOR3	vNewPos;
+	//새로운 포스
+	D3DXVECTOR3	vNewPos;
 
-	//D3DXMATRIXA16	matR;
+	D3DXMATRIXA16	matR;
 
-	//brushLine[1].p = vCurPos * fBrushSize + m_vBrushPos;
-	//brushLine[1].c = brushLine[0].c = D3DCOLOR_XRGB(120, 120, 255);
+	brushLine[1].p = vCurPos * fBrushSize + m_vBrushPos;
+	brushLine[1].c = brushLine[0].c = D3DCOLOR_XRGB(120, 120, 255);
 
-	//for (int i = 0; i < nNumCircleDot + 1; i++)
-	//{
-	//	brushLine[0] = brushLine[1];
+	for (int i = 0; i < nNumCircleDot + 1; i++)
+	{
+		brushLine[0] = brushLine[1];
 
-	//	D3DXMatrixRotationY(&matR, i * fRadian);
+		D3DXMatrixRotationY(&matR, i * fRadian);
 
-	//	D3DXVec3TransformCoord(&vNewPos, &vCurPos, &matR);
-	//	D3DXVec3Normalize(&vNewPos, &vNewPos);
+		D3DXVec3TransformCoord(&vNewPos, &vCurPos, &matR);
+		D3DXVec3Normalize(&vNewPos, &vNewPos);
 
-	//	brushLine[1].p = vNewPos * fBrushSize + m_vBrushPos;
+		brushLine[1].p = vNewPos * fBrushSize + m_vBrushPos;
 
-	//	if (brushLine[1].p.x < -D_MAPHALFSIZEX ||
-	//		brushLine[1].p.x > D_MAPHALFSIZEX ||
-	//		brushLine[1].p.z < -D_MAPHALFSIZEZ ||
-	//		brushLine[1].p.z > D_MAPHALFSIZEZ)
-	//	{
-	//		continue;
-	//	}
-	//	else
-	//	{
-	//		D_DEVICE->SetFVF(ST_BRUSH::FVF);
-	//		D_DEVICE->DrawPrimitiveUP(D3DPT_LINELIST, 1, brushLine, sizeof(ST_BRUSH));
-	//	}
-	//}
+		if (brushLine[1].p.x < -D_MAPHALFSIZEX ||
+			brushLine[1].p.x > D_MAPHALFSIZEX ||
+			brushLine[1].p.z < -D_MAPHALFSIZEZ ||
+			brushLine[1].p.z > D_MAPHALFSIZEZ)
+		{
+			continue;
+		}
+		else
+		{
+			D_DEVICE->SetFVF(ST_BRUSH::FVF);
+			D_DEVICE->DrawPrimitiveUP(D3DPT_LINELIST, 1, brushLine, sizeof(ST_BRUSH));
+		}
+	}
 
-	//CHAR str[1024] = "";
-	//sprintf_s(str, "현재pos: %d", m_vBrushPos.y);
-	//D_FONTMANAGER->DrawFontText("TimerFont", str, NULL, RectMake(0, 100, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
+	CHAR str[1024] = "";
+	sprintf_s(str, "현재pos: %f %f %f", m_vBrushPos.x, m_vBrushPos.y, m_vBrushPos.z);
+	D_FONTMANAGER->DrawFontText("TimerFont", str, NULL, RectMake(0, 100, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
 }
 
 void cMapTool::Save()
