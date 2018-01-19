@@ -6,6 +6,9 @@ cSkinnedMesh::cSkinnedMesh()
 	: m_pRootBone(NULL)
 	, m_pAnimationController(NULL)
 	, m_pSphere(NULL)
+	, m_fPassedBlendTime(0.F)
+	, m_fBlendTime(0.F)
+	, m_bIsBlend(false)
 {
 }
 
@@ -50,7 +53,11 @@ void cSkinnedMesh::Release()
 
 void cSkinnedMesh::Update()
 {
-	UpdateMatWorldTM((ST_BONE*)m_pRootBone, &m_matWorldTM);
+	// Animation Code
+	this->UpdateAnimation();
+
+	// Frame & Mesh Code
+	UpdateMatWorldTM((ST_BONE*)m_pRootBone, m_pMatWorldPtr);
 	this->UpdateSkinnedMesh((ST_BONE*)m_pRootBone);
 }
 
@@ -228,4 +235,69 @@ void cSkinnedMesh::RenderBoneLines(ST_BONE* pBone, ST_BONE* pParent, D3DXMATRIXA
    {
 	   RenderBoneLines((ST_BONE*)pBone->pFrameFirstChild, pBone, matWorld);
    }
+}
+
+void cSkinnedMesh::SetAnimationIndex(int nIndex)
+{
+	int nMax = m_pAnimationController->GetNumAnimationSets();
+	if (nIndex > nMax)	nIndex = nIndex % nMax;
+
+	LPD3DXANIMATIONSET	pAnimSet = NULL;
+	m_pAnimationController->GetAnimationSet(nIndex, &pAnimSet);
+	m_pAnimationController->SetTrackAnimationSet(0, pAnimSet);
+
+	D_SAFE_RELEASE(pAnimSet);
+}
+
+void cSkinnedMesh::SetAnimationIndexBlend(int nIndex)
+{
+	m_bIsBlend = true;
+	m_fPassedBlendTime = 0.0f;
+
+	int nMax = m_pAnimationController->GetNumAnimationSets();
+	if (nIndex > nMax)	nIndex = nIndex % nMax;
+
+	LPD3DXANIMATIONSET	pPrevAnimSet = NULL;
+	LPD3DXANIMATIONSET	pNextAnimSet = NULL;
+
+	D3DXTRACK_DESC stTrackDesc;
+	m_pAnimationController->GetTrackDesc(0, &stTrackDesc);
+
+	m_pAnimationController->GetTrackAnimationSet(0, &pPrevAnimSet);
+	m_pAnimationController->SetTrackAnimationSet(1, pPrevAnimSet);
+	m_pAnimationController->SetTrackDesc(1, &stTrackDesc);
+
+	m_pAnimationController->GetAnimationSet(nIndex, &pNextAnimSet);
+	m_pAnimationController->SetTrackAnimationSet(0, pNextAnimSet);
+
+	m_pAnimationController->SetTrackWeight(0, 0.0f);
+	m_pAnimationController->SetTrackWeight(1, 1.0f);
+
+	D_SAFE_RELEASE(pPrevAnimSet);
+	D_SAFE_RELEASE(pNextAnimSet);
+}
+
+void cSkinnedMesh::UpdateAnimation()
+{
+	if (m_pAnimationController)
+	{
+		if (m_bIsBlend)
+		{
+			m_fPassedBlendTime += D_TIMEMANAGER->GetElapsedTime();
+			if (m_fPassedBlendTime >= m_fBlendTime)
+			{
+				m_pAnimationController->SetTrackWeight(0, 1.0f);
+				m_pAnimationController->SetTrackEnable(1, false);
+			}
+			else
+			{
+				float fWeight = m_fPassedBlendTime / m_fBlendTime;
+				m_pAnimationController->SetTrackWeight(0, fWeight);
+				m_pAnimationController->SetTrackWeight(1, 1.0f - fWeight);
+			}
+		}
+
+		m_pAnimationController->AdvanceTime(
+			D_TIMEMANAGER->GetElapsedTime(), NULL);
+	}
 }

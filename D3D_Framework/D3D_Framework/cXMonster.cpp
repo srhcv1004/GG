@@ -1,14 +1,11 @@
 #include "stdafx.h"
 #include "cXMonster.h"
 #include "cSkinnedMesh.h"
-#include "cSkinnedMonster.h"
-
 
 cXMonster::cXMonster()
 	:m_Monster(NULL)
 {
 }
-
 
 cXMonster::~cXMonster()
 {
@@ -17,7 +14,11 @@ cXMonster::~cXMonster()
 
 void cXMonster::Setup()
 {
+<<<<<<< HEAD
+	//m_Monster = new cSkinnedMonster;
+=======
 	m_Monster = new cSkinnedMonster;
+>>>>>>> ce453d3fcd9addc1d862da3fd79249e07d0d599f
 	//m_Monster->Setup();
 }
 

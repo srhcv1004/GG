@@ -1,7 +1,6 @@
 #pragma once
-#include "cCharacter.h"
 
-class cSkinnedMesh : public cCharacter
+class cSkinnedMesh
 {
 protected:
 	D3DXFRAME*												m_pRootBone;
@@ -11,6 +10,14 @@ protected:
 
 protected:
 	ID3DXAnimationController*								m_pAnimationController;
+
+protected:
+	D_SYNTHESIZE(D3DXMATRIXA16*, m_pMatWorldPtr, MatWorldPtr);
+
+protected:
+	float													m_fPassedBlendTime;
+	float													m_fBlendTime;
+	bool													m_bIsBlend;
 
 private:
 	void SetupSkinnedMesh(ST_BONE* pBone);
@@ -25,6 +32,9 @@ private:
 	void RenderBones(ST_BONE* pBone, D3DXMATRIXA16* pMatWorld);
 	void RenderBoneLines(ST_BONE* pBone, ST_BONE* pParent, D3DXMATRIXA16* matWorld);
 
+protected:
+	void UpdateAnimation();
+
 public:
 	cSkinnedMesh();
 	virtual ~cSkinnedMesh();
@@ -33,5 +43,9 @@ public:
 	virtual void Release();
 	virtual void Update();
 	virtual void Render();
+
+	void SetAnimationIndex(int nIndex);
+	void SetAnimationIndexBlend(int nIndex);
+
 };
 

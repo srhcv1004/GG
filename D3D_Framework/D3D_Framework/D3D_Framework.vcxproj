@@ -209,7 +209,6 @@
     <ClInclude Include="cSceneManager.h" />
     <ClInclude Include="cSingletonBase.h" />
     <ClInclude Include="cSkinnedMesh.h" />
-    <ClInclude Include="cSkinnedMonster.h" />
     <ClInclude Include="cSoundManager.h" />
     <ClInclude Include="cSprite.h" />
     <ClInclude Include="cSpriteManager.h" />
@@ -221,7 +220,6 @@
     <ClInclude Include="cUIButton.h" />
     <ClInclude Include="cUISprite.h" />
     <ClInclude Include="cUIText.h" />
-    <ClInclude Include="cSkinnedPlayer.h" />
     <ClInclude Include="cXMonster.h" />
     <ClInclude Include="cXPlayer.h" />
     <ClInclude Include="D3DMain.h" />
@@ -283,7 +281,6 @@
     <ClCompile Include="cRndManager.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
-    <ClCompile Include="cSkinnedMonster.cpp" />
     <ClCompile Include="cSoundManager.cpp" />
     <ClCompile Include="cSprite.cpp" />
     <ClCompile Include="cSpriteManager.cpp" />
@@ -295,7 +292,6 @@
     <ClCompile Include="cUIButton.cpp" />
     <ClCompile Include="cUISprite.cpp" />
     <ClCompile Include="cUIText.cpp" />
-    <ClCompile Include="cSkinnedPlayer.cpp" />
     <ClCompile Include="cXMonster.cpp" />
     <ClCompile Include="cXPlayer.cpp" />
     <ClCompile Include="D3DMain.cpp" />
