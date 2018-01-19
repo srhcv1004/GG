@@ -477,6 +477,12 @@
     <ClInclude Include="cXMonster.h">
       <Filter>D3DGameFramework\cXFile\cCharacter\cXPlayer</Filter>
     </ClInclude>
+    <ClInclude Include="cHeightMap.h">
+      <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClInclude>
+    <ClInclude Include="iMap.h">
+      <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -682,6 +688,12 @@
     </ClCompile>
     <ClCompile Include="cXMonster.cpp">
       <Filter>D3DGameFramework\cXFile\cCharacter\cXPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="cHeightMap.cpp">
+      <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClCompile>
+    <ClCompile Include="iMap.cpp">
+      <Filter>소스 파일\cMainGame\cMapTool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

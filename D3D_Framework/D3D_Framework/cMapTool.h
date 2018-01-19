@@ -1,31 +1,30 @@
 #pragma once
 #include "cGameNode.h"
 
+class cHeightMap;
 class cCamera;
 
 class cMapTool : public cGameNode
 {
 private:
-	struct ST_MAPTILE
-	{
-		ST_PNT_VERTEX	stVertex;
-		float			fHeightY;
-	};
-
 	struct ST_BRUSH
 	{
-		D3DXVECTOR3		vPick;
-		float			fRadius;
+		D3DXVECTOR3		p;
+		D3DCOLOR		c;
+
+		enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
 		//....또 뭐가 필요할까..
 	};
 
 private:
 	cCamera*												m_pCamera;
-	LPD3DXMESH												m_mapMesh;
-	D3DXMATRIXA16											m_matWorld;
-	D3DMATERIAL9											m_mtrl;
 
-	D3DXVECTOR3												m_vecPos;
+	DWORD													m_dwCellSize;
+	D3DXVECTOR3												m_vBrushPos;
+
+	cHeightMap*												m_pHeightMap;
+
+	LPD3DXMESH												m_pMesh;
 
 public:
 	cMapTool();
@@ -35,10 +34,10 @@ public:
 	virtual void Update();
 	virtual void Render();
 
-	void SetMapGrid();
-	void SetMaterial();
 	void SetLight();
-	void RenderMapGrid();
+
+	void Picking();
+	void DrawBrush();
 
 	void Save();
 	void Load();

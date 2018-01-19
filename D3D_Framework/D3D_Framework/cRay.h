@@ -3,8 +3,8 @@
 class cRay
 {
 private:
-	D3DXVECTOR3												m_vPos;
-	D3DXVECTOR3												m_vDir;
+	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vPos, VecPos);
+	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vDir, vecDir);
 
 public:
 	cRay();

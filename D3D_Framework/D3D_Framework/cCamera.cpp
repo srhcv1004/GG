@@ -57,9 +57,9 @@ void cCamera::ControlCamDistance()
 {
 	m_fCamDistance -= g_fWheelDelta;
 
-	if (m_fCamDistance < 10.F)
+	if (m_fCamDistance < 1.F)
 	{
-		m_fCamDistance = 10.F;
+		m_fCamDistance = 1.F;
 	}
 	else if (m_fCamDistance > 30.F)
 	{

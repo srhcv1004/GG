@@ -2,19 +2,21 @@
 #include "cMapTool.h"
 #include "cGrid.h"
 #include "cMapCamera.h"
+#include "cHeightMap.h"
+#include "cRay.h"
 
 cMapTool::cMapTool()
 	: m_pCamera(NULL)
-	, m_vecPos(0, 0, 0)
+	, m_dwCellSize(1)
+	, m_vBrushPos(0, 0, 0)
+	, m_pHeightMap(NULL)
 {
-	D3DXMatrixIdentity(&m_matWorld);
-	ZeroMemory(&m_mtrl, sizeof(D3DMATERIAL9));
 }
 
 cMapTool::~cMapTool()
 {
 	D_SAFE_DELETE(m_pCamera);
-	D_SAFE_RELEASE(m_mapMesh);
+	D_SAFE_DELETE(m_pHeightMap);
 }
 
 void cMapTool::Setup()
@@ -22,120 +24,32 @@ void cMapTool::Setup()
 	m_pCamera = new cMapCamera();
 	m_pCamera->Setup();
 
+	m_pHeightMap = new cHeightMap();
+	m_pHeightMap->Setup();
+
 	SetLight();
-	SetMaterial();
-	SetMapGrid();
+
+	D3DXCreateSphere(D_DEVICE, 0.1f, 10, 10, &m_pMesh, 0);
 }
 
 void cMapTool::Update()
 {
 	if (m_pCamera)
 		m_pCamera->Update();
+
+
+	if (D_KEYMANAGER->IsOnceKeyDown(VK_RBUTTON))
+	{
+		Picking();
+	}
 }
 
 void cMapTool::Render()
 {
-	RenderMapGrid();
-}
+	if (m_pHeightMap)
+		m_pHeightMap->Render();
 
-void cMapTool::SetMapGrid()
-{
-	std::vector<ST_PNT_VERTEX>		vecVertex;
-	std::vector<DWORD>				vecIndex;
-
-	//좌표
-	for (int i = 0; i < D_MAPTILENUMZ; i++)
-	{
-		for (int j = 0; j < D_MAPTILENUMX; j++)
-		{
-			ST_PNT_VERTEX v;
-
-			v.p = D3DXVECTOR3(j * D_MAPTILESIZE - D_MAPHALFSIZEX, 0, i * D_MAPTILESIZE - D_MAPHALFSIZEZ);
-			v.n = D3DXVECTOR3(0, 1, 0);
-			v.t = D3DXVECTOR2(0, 0);
-			vecVertex.push_back(v);
-		}
-	}
-
-	//노말
-	for (int z = 0; z < D_MAPTILENUMZ; z++)
-	{
-		for (int x = 0; x < D_MAPTILENUMX; x++)
-		{
-			if ((z == 0) || (x == 0) || (z == D_MAPTILENUMZ - 1) || (x == D_MAPTILENUMX - 1))
-			{
-				vecVertex[z * D_MAPTILENUMZ + x].n = D3DXVECTOR3(0, 1, 0);
-			}
-			else
-			{
-				D3DXVECTOR3 v1 = vecVertex[(z + 1) * D_MAPTILENUMZ + (x - 0)].p - vecVertex[(z - 1) * D_MAPTILENUMZ + (x - 0)].p;
-				D3DXVECTOR3 v2 = vecVertex[(z - 0) * D_MAPTILENUMZ + (x + 1)].p - vecVertex[(z - 0) * D_MAPTILENUMZ + (x - 1)].p;
-
-				D3DXVECTOR3 vNormal;
-				D3DXVec3Cross(&vNormal, &v1, &v2);
-				D3DXVec3Normalize(&vNormal, &vNormal);
-
-				vecVertex[z * D_MAPTILENUMZ + x].n = vNormal;
-			}
-		}
-	}
-
-	//인덱스
-	for (int x = 0; x < D_MAPTILENUMX - 1; x++)
-	{
-		for (int z = 0; z < D_MAPTILENUMZ - 1; z++)
-		{
-			int _0 = (z + 0) * D_MAPTILENUMZ + (x + 0);
-			int _1 = (z + 1) * D_MAPTILENUMZ + (x + 0);
-			int _2 = (z + 0) * D_MAPTILENUMZ + (x + 1);
-			int _3 = (z + 1) * D_MAPTILENUMZ + (x + 1);
-
-			vecIndex.push_back(_0);
-			vecIndex.push_back(_1);
-			vecIndex.push_back(_2);
-
-			vecIndex.push_back(_3);
-			vecIndex.push_back(_2);
-			vecIndex.push_back(_1);
-		}
-	}
-
-	//메쉬
-	D3DXCreateMeshFVF(vecIndex.size() / 3,
-		vecVertex.size(),
-		D3DXMESH_MANAGED | D3DXMESH_32BIT,
-		ST_PNT_VERTEX::FVF,
-		D_DEVICE,
-		&m_mapMesh);
-
-	ST_PNT_VERTEX* pVertex;
-	m_mapMesh->LockVertexBuffer(0, (void**)&pVertex);
-	memcpy(pVertex, &vecVertex[0], vecVertex.size() * sizeof(ST_PNT_VERTEX));
-	m_mapMesh->UnlockVertexBuffer();
-
-	DWORD* pI;
-	m_mapMesh->LockIndexBuffer(0, (void**)&pI);
-	memcpy(pI, &vecIndex[0], vecIndex.size() * sizeof(DWORD));
-	m_mapMesh->UnlockIndexBuffer();
-
-	DWORD* pAttrBuffer;
-	m_mapMesh->LockAttributeBuffer(0, &pAttrBuffer);
-	ZeroMemory(pAttrBuffer, (vecIndex.size() / 3) * sizeof(DWORD));
-	m_mapMesh->UnlockAttributeBuffer();
-
-	std::vector<DWORD>	vecAdj(vecIndex.size());
-	m_mapMesh->GenerateAdjacency(0.f, &vecAdj[0]);
-	m_mapMesh->OptimizeInplace(D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_COMPACT | D3DXMESHOPT_VERTEXCACHE,
-		&vecAdj[0],
-		0,
-		0,
-		0);
-}
-
-void cMapTool::SetMaterial()
-{
-	m_mtrl.Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	m_mtrl.Ambient = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	DrawBrush();
 }
 
 void cMapTool::SetLight()
@@ -153,14 +67,106 @@ void cMapTool::SetLight()
 	D_DEVICE->LightEnable(0, true);
 }
 
-void cMapTool::RenderMapGrid()
+void cMapTool::Picking()
 {
-	D_DEVICE->SetRenderState(D3DRS_LIGHTING, true);
-	D_DEVICE->SetTransform(D3DTS_WORLD, &m_matWorld);
-	D_DEVICE->SetTexture(0, NULL);
-	D_DEVICE->SetMaterial(&m_mtrl);
-	D_DEVICE->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-	m_mapMesh->DrawSubset(0);
+	std::vector<D3DXVECTOR3>& vecVertex = m_pHeightMap->GetVecVertex();
+	int nTileCount = D_MAPTILENUMX - 1;
+	int nCol = nTileCount + 1;
+
+	cRay r = cRay::RayAtWorldSpace(g_ptMouse.x, g_ptMouse.y);
+
+	//D3DXVECTOR3& vPos = r.GetPosition();
+
+	for (int x = 0; x < nTileCount; x++)
+	{
+		for (int z = 0; z < nTileCount; z++)
+		{
+			D3DXVECTOR3 vPickedPos1;
+			D3DXVECTOR3 vPickedPos2;
+
+			int _0 = (z + 0) * nCol + (x + 0);
+			int _1 = (z + 1) * nCol + (x + 0);
+			int _2 = (z + 0) * nCol + (x + 1);
+			int _3 = (z + 1) * nCol + (x + 1);
+
+			bool b1 = r.IntersectTri(vecVertex[_0],
+				vecVertex[_1],
+				vecVertex[_2],
+				vPickedPos1);
+
+			bool b2 = r.IntersectTri(vecVertex[_3],
+				vecVertex[_2],
+				vecVertex[_1],
+				vPickedPos2);
+
+			if (b1)
+			{
+				//exit(0);
+				m_vBrushPos = vPickedPos1;
+				return;
+			}
+			if (b2)
+			{
+				exit(0);
+				m_vBrushPos = vPickedPos2;
+				return;
+			}
+		}
+	}
+}
+
+void cMapTool::DrawBrush()
+{
+	//// 점 개수가 많을수록 원이 더 동그란 모양이 됨
+	//int nNumCircleDot = 50; 
+
+	//float fRadian = D3DX_PI * 2.0f / nNumCircleDot;
+
+	////CellSize가 커질수록 브러쉬의 크기가 커짐
+	//float fBrushSize = 1.0f * m_dwCellSize;
+
+	////브러쉬를 그릴 구조체
+	//ST_BRUSH brushLine[2];
+
+	////??????????????
+	//D3DXVECTOR3 vCurPos(1.0f, 0.0f, 0.0f);
+
+	////새로운 포스
+	//D3DXVECTOR3	vNewPos;
+
+	//D3DXMATRIXA16	matR;
+
+	//brushLine[1].p = vCurPos * fBrushSize + m_vBrushPos;
+	//brushLine[1].c = brushLine[0].c = D3DCOLOR_XRGB(120, 120, 255);
+
+	//for (int i = 0; i < nNumCircleDot + 1; i++)
+	//{
+	//	brushLine[0] = brushLine[1];
+
+	//	D3DXMatrixRotationY(&matR, i * fRadian);
+
+	//	D3DXVec3TransformCoord(&vNewPos, &vCurPos, &matR);
+	//	D3DXVec3Normalize(&vNewPos, &vNewPos);
+
+	//	brushLine[1].p = vNewPos * fBrushSize + m_vBrushPos;
+
+	//	if (brushLine[1].p.x < -D_MAPHALFSIZEX ||
+	//		brushLine[1].p.x > D_MAPHALFSIZEX ||
+	//		brushLine[1].p.z < -D_MAPHALFSIZEZ ||
+	//		brushLine[1].p.z > D_MAPHALFSIZEZ)
+	//	{
+	//		continue;
+	//	}
+	//	else
+	//	{
+	//		D_DEVICE->SetFVF(ST_BRUSH::FVF);
+	//		D_DEVICE->DrawPrimitiveUP(D3DPT_LINELIST, 1, brushLine, sizeof(ST_BRUSH));
+	//	}
+	//}
+
+	//CHAR str[1024] = "";
+	//sprintf_s(str, "현재pos: %d", m_vBrushPos.y);
+	//D_FONTMANAGER->DrawFontText("TimerFont", str, NULL, RectMake(0, 100, 0, 0), D3DCOLOR_XRGB(255, 255, 255));
 }
 
 void cMapTool::Save()
