@@ -20,7 +20,6 @@ void cMainGame::Setup()
 
 	this->AddFonts();
 	this->AddSprites();
-
 	this->AddScenes();
 }
 

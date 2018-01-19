@@ -1,8 +1,9 @@
 #pragma once
+#include "cCharacter.h"
 
 class cSkinnedMesh;
 
-class cXPlayer
+class cXPlayer : public cCharacter
 {
 public:
 	enum E_PARTS
@@ -20,6 +21,9 @@ private:
 private:
 	void SetupSkinnedParts();
 	
+private:
+	void PositionChangeKeyInput();
+
 public:
 	cXPlayer();
 	~cXPlayer();

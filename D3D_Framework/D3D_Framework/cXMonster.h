@@ -6,6 +6,7 @@ class cXMonster
 {
 protected:
 	cSkinnedMesh* m_Monster;
+
 public:
 
 	cXMonster();
