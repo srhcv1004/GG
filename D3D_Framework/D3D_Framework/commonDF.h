@@ -22,9 +22,18 @@
 #define D_GRIDHALFSIZEZ										D_TILENUMZ * D_TILESIZEZ / 2.F
 
 //youngju ==============================================================================================
-#define D_MAPTILENUMX										100
-#define D_MAPTILENUMZ										100
-#define D_MAPTILESIZE										0.2f
+#define D_MAPTILENUMX										(100)
+#define D_MAPTILENUMZ										(100)
+#define D_MAPTILESIZE										(0.2f)
+
+#define D_MAPTILEHALFSIZE									(D_MAPTILESIZE / 2.F)
+
+#define D_MAPSIZEX											(D_MAPTILENUMX * D_MAPTILESIZE)
+#define D_MAPSIZEZ											(D_MAPTILENUMZ * D_MAPTILESIZE)
+
+#define D_MAPHALFSIZEX										((D_MAPTILENUMX * D_MAPTILESIZE) / 2.F)
+#define D_MAPHALFSIZEZ										((D_MAPTILENUMZ * D_MAPTILESIZE) / 2.F)
+
 //======================================================================================================
 
 // Top level category ID's

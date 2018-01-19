@@ -18,7 +18,7 @@ cXMonster::~cXMonster()
 void cXMonster::Setup()
 {
 	m_Monster = new cSkinnedMonster;
-	m_Monster->Setup();
+	//m_Monster->Setup();
 }
 
 void cXMonster::Release()
