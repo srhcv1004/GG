@@ -474,11 +474,19 @@
     <ClInclude Include="iMap.h">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="cGameCamera.h">
       <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
     </ClInclude>
     <ClInclude Include="cMapCamera.h">
       <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
+=======
+    <ClInclude Include="cXMonsterManager.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="cXNormalMonster.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+>>>>>>> 086231afa0b58b93228b30bae654504751b061b1
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -680,11 +688,19 @@
     <ClCompile Include="iMap.cpp">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="cGameCamera.cpp">
       <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
     </ClCompile>
     <ClCompile Include="cMapCamera.cpp">
       <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
+=======
+    <ClCompile Include="cXMonsterManager.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="cXNormalMonster.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+>>>>>>> 086231afa0b58b93228b30bae654504751b061b1
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
