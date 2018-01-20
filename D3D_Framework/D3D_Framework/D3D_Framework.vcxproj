@@ -23,7 +23,7 @@
     <ProjectGuid>{C8018301-02FC-4D6B-9C65-573989B98208}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>D3DFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -221,6 +221,8 @@
     <ClInclude Include="cUISprite.h" />
     <ClInclude Include="cUIText.h" />
     <ClInclude Include="cXMonster.h" />
+    <ClInclude Include="cXMonsterManager.h" />
+    <ClInclude Include="cXNormalMonster.h" />
     <ClInclude Include="cXPlayer.h" />
     <ClInclude Include="D3DMain.h" />
     <ClInclude Include="cImage.h" />
@@ -293,6 +295,8 @@
     <ClCompile Include="cUISprite.cpp" />
     <ClCompile Include="cUIText.cpp" />
     <ClCompile Include="cXMonster.cpp" />
+    <ClCompile Include="cXMonsterManager.cpp" />
+    <ClCompile Include="cXNormalMonster.cpp" />
     <ClCompile Include="cXPlayer.cpp" />
     <ClCompile Include="D3DMain.cpp" />
     <ClCompile Include="cImage.cpp" />
