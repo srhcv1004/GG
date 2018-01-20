@@ -53,8 +53,11 @@ void cTimeManager::Render()
 
 #else
 
-	sprintf_s(str, "FPS : %d", this->GetFrameRate());
-	TextOut(hdc, 0, 0, str, strlen(str));
+	sprintf_s(str, "¡ºFPS : %d¡»", this->GetFrameRate());
+	D_FONTMANAGER->DrawFontText("TimerFont", str,
+		NULL,
+		RectMake(0, 0, 0, 0),
+		D3DCOLOR_XRGB(255, 255, 255));
 
 #endif // _DEBUG
 

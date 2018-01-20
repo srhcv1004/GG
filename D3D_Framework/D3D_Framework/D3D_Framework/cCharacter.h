@@ -6,8 +6,8 @@ protected:
 	D3DXMATRIXA16											m_matWorldTM;
 
 protected:
-	D_SYNTHESIZE(D3DXVECTOR3, m_vPosition, Position);
-	D_SYNTHESIZE(D3DXVECTOR3, m_vDirection, Direction);
+	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vPosition, Position);
+	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vDirection, Direction);
 	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vChangeDir, ChangeDir);
 
 protected:

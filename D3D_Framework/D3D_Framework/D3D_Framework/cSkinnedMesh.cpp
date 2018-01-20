@@ -69,7 +69,7 @@ void cSkinnedMesh::Render()
 	D3DXMATRIXA16 matW;
 	D3DXMatrixIdentity(&matW);
 
-	RenderBoneLines((ST_BONE*)m_pRootBone, NULL, &matW);
+	//RenderBoneLines((ST_BONE*)m_pRootBone, NULL, &matW);
 }
 
 void cSkinnedMesh::SetupSkinnedMesh(ST_BONE* pBone)
@@ -159,14 +159,12 @@ void cSkinnedMesh::RenderSkinnedMesh(ST_BONE* pBone)
 
 		if (pBoneMesh->pSkinInfo)
 		{
-			for (DWORD i = 0; i < pBoneMesh->dwAttributeCount; i++)
+			for (DWORD i = 0; i < pBoneMesh->vecMaterial.size(); i++)
 			{
-				DWORD nAttributeID = pBoneMesh->pAttribute[i].AttribId;
+				D_DEVICE->SetMaterial(&pBoneMesh->vecMaterial[i]);
+				D_DEVICE->SetTexture(0, pBoneMesh->vecTexture[i]);
 
-				D_DEVICE->SetMaterial(&pBoneMesh->vecMaterial[nAttributeID]);
-				D_DEVICE->SetTexture(0, pBoneMesh->vecTexture[nAttributeID]);
-
-				pBoneMesh->MeshData.pMesh->DrawSubset(nAttributeID);
+				pBoneMesh->MeshData.pMesh->DrawSubset(i);
 			}
 		}
 	}
@@ -198,43 +196,43 @@ void cSkinnedMesh::RenderBones(ST_BONE* pBone, D3DXMATRIXA16* pMatWorld)
 
 void cSkinnedMesh::RenderBoneLines(ST_BONE* pBone, ST_BONE* pParent, D3DXMATRIXA16* matWorld)
 {
-   if (!pBone) pBone = (ST_BONE*)m_pRootBone;
+	if (!pBone) pBone = (ST_BONE*)m_pRootBone;
 
-   D3DXMATRIXA16   r, s, t;
-   D3DXMatrixRotationYawPitchRoll(&r, -D3DX_PI * 0.5f, 0.0f, 0.0f);
+	D3DXMATRIXA16   r, s, t;
+	D3DXMatrixRotationYawPitchRoll(&r, -D3DX_PI * 0.5f, 0.0f, 0.0f);
 
-   if (pParent && pBone->Name && pParent->Name)
-   {
-      D_DEVICE->SetRenderState(D3DRS_LIGHTING, false);
-      s = r * pBone->matWorldTM * (*matWorld);
-      D3DXMatrixTranslation(&t, s(3, 0), s(3, 1), s(3, 2));
-	  D_DEVICE->SetTransform(D3DTS_WORLD, &t);
-      m_pSphere->DrawSubset(0);
+	if (pParent && pBone->Name && pParent->Name)
+	{
+		D_DEVICE->SetRenderState(D3DRS_LIGHTING, false);
+		s = r * pBone->matWorldTM * (*matWorld);
+		D3DXMatrixTranslation(&t, s(3, 0), s(3, 1), s(3, 2));
+		D_DEVICE->SetTransform(D3DTS_WORLD, &t);
+		m_pSphere->DrawSubset(0);
 
-      D3DXMATRIXA16 w1 = pBone->matWorldTM;
-	  D3DXMATRIXA16 w2 = pParent->matWorldTM;
+		D3DXMATRIXA16 w1 = pBone->matWorldTM;
+		D3DXMATRIXA16 w2 = pParent->matWorldTM;
 
-      D3DXVECTOR3 thisBone = D3DXVECTOR3(w1(3, 0), w1(3, 1), w1(3, 2));
-      D3DXVECTOR3 parentBone = D3DXVECTOR3(w2(3, 0), w2(3, 1), w2(3, 2));
+		D3DXVECTOR3 thisBone = D3DXVECTOR3(w1(3, 0), w1(3, 1), w1(3, 2));
+		D3DXVECTOR3 parentBone = D3DXVECTOR3(w2(3, 0), w2(3, 1), w2(3, 2));
 
-	  D_DEVICE->SetTransform(D3DTS_WORLD, matWorld);
+		D_DEVICE->SetTransform(D3DTS_WORLD, matWorld);
 
-	  ST_PC_VERTEX vertex[] = { ST_PC_VERTEX(parentBone, D3DXCOLOR(0.f, 0.f, 0.f, 1.0f)),
-		  ST_PC_VERTEX(thisBone, D3DXCOLOR(0.f, 0.f, 0.f, 1.0f)) };
+		ST_PC_VERTEX vertex[] = { ST_PC_VERTEX(parentBone, D3DXCOLOR(0.f, 0.f, 0.f, 1.0f)),
+			ST_PC_VERTEX(thisBone, D3DXCOLOR(0.f, 0.f, 0.f, 1.0f)) };
 
-	  D_DEVICE->SetRenderState(D3DRS_LIGHTING, false);
-	  D_DEVICE->SetFVF(ST_PC_VERTEX::FVF);
-	  D_DEVICE->DrawPrimitiveUP(D3DPT_LINESTRIP, 1, &vertex[0], sizeof(ST_PC_VERTEX));
-   }
+		D_DEVICE->SetRenderState(D3DRS_LIGHTING, false);
+		D_DEVICE->SetFVF(ST_PC_VERTEX::FVF);
+		D_DEVICE->DrawPrimitiveUP(D3DPT_LINESTRIP, 1, &vertex[0], sizeof(ST_PC_VERTEX));
+	}
 
-   if (pBone->pFrameSibling)
-   {
-	   RenderBoneLines((ST_BONE*)pBone->pFrameSibling, pParent, matWorld);
-   }
-   if (pBone->pFrameFirstChild)
-   {
-	   RenderBoneLines((ST_BONE*)pBone->pFrameFirstChild, pBone, matWorld);
-   }
+	if (pBone->pFrameSibling)
+	{
+		RenderBoneLines((ST_BONE*)pBone->pFrameSibling, pParent, matWorld);
+	}
+	if (pBone->pFrameFirstChild)
+	{
+		RenderBoneLines((ST_BONE*)pBone->pFrameFirstChild, pBone, matWorld);
+	}
 }
 
 void cSkinnedMesh::SetAnimationIndex(int nIndex)

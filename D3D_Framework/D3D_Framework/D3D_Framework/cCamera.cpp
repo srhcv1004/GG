@@ -2,8 +2,9 @@
 #include "cCamera.h"
 
 cCamera::cCamera()
-	: m_vEye(0.F, 0.F, 0.F)
-	, m_vLookAt(0.F, 0.F, 0.F)
+	: m_pFollowPosition(NULL)
+	, m_vEye(0.F, 0.F, 0.F)
+	, m_vLookAt(0.F, 1.5, 0.F)
 	, m_vUp(0.F, 0.F, 0.F)
 	, m_ptPrevMouse()
 	, m_fCamRotX(0.F)
@@ -17,8 +18,10 @@ cCamera::~cCamera()
 {
 }
 
-void cCamera::Setup()
-{	
+void cCamera::Setup(D3DXVECTOR3* pFollowPosition)
+{
+	m_pFollowPosition = pFollowPosition;
+
 	// ----------------------------------------------------------------------------------------------------
 	m_fCamDistance = 15.5F;
 	m_vEye = D3DXVECTOR3(0.F, m_fCamDistance, -m_fCamDistance);
@@ -32,6 +35,7 @@ void cCamera::Update()
 {
 	this->ControlCamDistance();
 	this->ControlCamRotation();
+	this->CamFollowPosition();
 
 	this->CreateMatView();
 }
@@ -48,7 +52,7 @@ void cCamera::CreateMatProj()
 {
 	D3DXMATRIXA16 matProj;
 
-	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 3.F, 
+	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 3.F,
 		(FLOAT)D_WINSIZEX / (FLOAT)D_WINSIZEY, 1.F, 1000.F);
 	D_DEVICE->SetTransform(D3DTS_PROJECTION, &matProj);
 }
@@ -102,4 +106,12 @@ void cCamera::ControlCamRotation()
 
 	matR = matRX * matRY;
 	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matR);
+}
+
+void cCamera::CamFollowPosition()
+{
+	if (!m_pFollowPosition) return;
+
+	m_vLookAt = (*m_pFollowPosition);
+	m_vEye = m_vEye + (*m_pFollowPosition);
 }

@@ -1,108 +1,16 @@
-﻿  stdafx.cpp
-  utils.cpp
-  iMap.cpp
-  cImage.cpp
-  D3DMain.cpp
-  cXPlayer.cpp
-  cXMonster.cpp
-  cUIText.cpp
-  cUISprite.cpp
-  cUIButton.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cuibutton.cpp(47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cUI.cpp
-  cTimer.cpp
-  cTimeManager.cpp
-  cTexMtlManager.cpp
-  cTexMtl.cpp
-  cSpriteManager.cpp
-  cSprite.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\csprite.cpp(157): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\csprite.cpp(175): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\csprite.cpp(193): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\csprite.cpp(214): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cSoundManager.cpp
-  cSkinnedMesh.cpp
-  cSceneManager.cpp
-  cRndManager.cpp
+﻿  cActionLiner.cpp
   코드를 생성하고 있습니다...
   컴파일하고 있습니다...
-  cRectTile.cpp
-  cRay.cpp
-  cProgressBar.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cprogressbar.cpp(24): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cprogressbar.cpp(25): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cprogressbar.cpp(49): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cprogressbar.cpp(52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cOptionUI.cpp
-  cOption.cpp
-  cObjLoadManager.cpp
-  cMapTool.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cmaptool.cpp(27): warning C4316: 'cHeightMap': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-  cMapCamera.cpp
-  cMainMenuUI.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cmainmenuui.cpp(61): warning C4316: 'cUIButton': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cmainmenuui.cpp(70): warning C4316: 'cUIButton': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cmainmenuui.cpp(79): warning C4316: 'cUIButton': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cmainmenuui.cpp(88): warning C4316: 'cUIButton': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  cXPlayer.cpp
+  cInGame.cpp
+c:\users\dodam\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cingame.cpp(21): warning C4316: 'cLineGrid': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+c:\users\dodam\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cingame.cpp(24): warning C4316: 'cXPlayer': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  cInterpolation.cpp
   cCubeManPlayer.cpp
   cCubeManNpc.cpp
-  cMainMenu.cpp
-  cMainGame.cpp
-  cKeyManager.cpp
-  cItemManager.cpp
-  cItem.cpp
-  cInven.cpp
-  cInterpolation.cpp
-  cInGame.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cingame.cpp(24): warning C4316: 'cLineGrid': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cingame.cpp(27): warning C4316: 'cXPlayer': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-  cImageManager.cpp
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
-  cHeightMap.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cheightmap.cpp(48): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cheightmap.cpp(153): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cheightmap.cpp(154): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cGrid.cpp
-  cGameNode.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cgamenode.cpp(109): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cgamenode.cpp(110): warning C4244: '=': 'float'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cGameCamera.cpp
-  cFontManager.cpp
-  cFont.cpp
-  cEquip.cpp
-  cDeviceManager.cpp
-  cCubeTile.cpp
-  cCubeParts.cpp
-  cCubeNode.cpp
-  cCube.cpp
-  cCubeMan.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(55): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(60): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(64): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(69): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(74): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\ccubeman.cpp(79): warning C4316: 'cCubeParts': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-  cCharacter.cpp
-  cCamera.cpp
   cCubeManAi.cpp
-  cAsePlayer.cpp
-  cAseNpc.cpp
-  cAseNode.cpp
-  cAse.cpp
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
-  cAseLoadManager.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\caseloadmanager.cpp(220): warning C4316: 'cAseNode': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\caseloadmanager.cpp(221): warning C4316: 'cAnimation': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-  cAseObject.cpp
-  cAseAi.cpp
-  cAnimation.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\canimation.cpp(70): warning C4244: '인수': 'DWORD'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\canimation.cpp(116): warning C4244: '인수': 'DWORD'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  cAllocateHierarchy.cpp
-c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\callocatehierarchy.cpp(14): warning C4316: 'ST_BONE': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
-  cActionSequence.cpp
-  cActionLiner.cpp
-  코드를 생성하고 있습니다...
-  D3D_Framework.vcxproj -> C:\Users\이영주\Documents\GitHub\GG\D3D_Framework\D3D_Framework\Debug\D3D_Framework.exe
+  cCubeMan.cpp
+  cCharacter.cpp
+  D3D_Framework.vcxproj -> C:\Users\dodam\Documents\GitHub\GG\D3D_Framework\D3D_Framework\Debug\D3D_Framework.exe

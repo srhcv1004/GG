@@ -10,7 +10,7 @@ public:
 	cMapCamera();
 	virtual ~cMapCamera();
 
-	virtual void Setup();
+	virtual void Setup(D3DXVECTOR3* pFollowPosition = NULL);
 	virtual void Update();
 };
 

@@ -3,13 +3,13 @@
 class cSkinnedMesh
 {
 protected:
-	D3DXFRAME*												m_pRootBone;
+	D_SYNTHESIZE(D3DXFRAME*, m_pRootBone, RootBone);
 
 protected:
-	ID3DXMesh*												m_pSphere;
+	ID3DXMesh * m_pSphere;
 
 protected:
-	ID3DXAnimationController*								m_pAnimationController;
+	ID3DXAnimationController * m_pAnimationController;
 
 protected:
 	D_SYNTHESIZE(D3DXMATRIXA16*, m_pMatWorldPtr, MatWorldPtr);

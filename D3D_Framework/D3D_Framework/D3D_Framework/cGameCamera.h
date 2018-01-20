@@ -7,7 +7,7 @@ public:
 	cGameCamera();
 	virtual ~cGameCamera();
 
-	virtual void Setup();
+	virtual void Setup(D3DXVECTOR3* pFollowPosition = NULL);
 	virtual void Update();
 };
 
