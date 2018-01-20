@@ -69,7 +69,7 @@ void cSkinnedMesh::Render()
 	D3DXMATRIXA16 matW;
 	D3DXMatrixIdentity(&matW);
 
-	RenderBoneLines((ST_BONE*)m_pRootBone, NULL, &matW);
+	//RenderBoneLines((ST_BONE*)m_pRootBone, NULL, &matW);
 }
 
 void cSkinnedMesh::SetupSkinnedMesh(ST_BONE* pBone)
@@ -159,14 +159,12 @@ void cSkinnedMesh::RenderSkinnedMesh(ST_BONE* pBone)
 
 		if (pBoneMesh->pSkinInfo)
 		{
-			for (DWORD i = 0; i < pBoneMesh->dwAttributeCount; i++)
+			for (DWORD i = 0; i < pBoneMesh->vecMaterial.size(); i++)
 			{
-				DWORD nAttributeID = pBoneMesh->pAttribute[i].AttribId;
+				D_DEVICE->SetMaterial(&pBoneMesh->vecMaterial[i]);
+				D_DEVICE->SetTexture(0, pBoneMesh->vecTexture[i]);
 
-				D_DEVICE->SetMaterial(&pBoneMesh->vecMaterial[nAttributeID]);
-				D_DEVICE->SetTexture(0, pBoneMesh->vecTexture[nAttributeID]);
-
-				pBoneMesh->MeshData.pMesh->DrawSubset(nAttributeID);
+				pBoneMesh->MeshData.pMesh->DrawSubset(i);
 			}
 		}
 	}

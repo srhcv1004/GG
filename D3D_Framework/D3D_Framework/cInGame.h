@@ -9,7 +9,7 @@ class cXPlayer;
 class cInGame : public cGameNode
 {
 private:
-	cCamera*											m_pCamera;
+	cCamera*												m_pCamera;
 
 private:
 	iGrid*													m_pLineGrid;

@@ -18,14 +18,15 @@ cInGame::~cInGame()
 
 void cInGame::Setup()
 {
-	m_pCamera = new cGameCamera();
-	m_pCamera->Setup();
-
 	m_pLineGrid = new cLineGrid();
 	m_pLineGrid->Setup();
 
 	m_pPlayer = new cXPlayer();
 	m_pPlayer->Setup();
+
+	m_pCamera = new cGameCamera();
+	m_pCamera->Setup(&m_pPlayer->GetPosition());
+
 }
 
 void cInGame::Release()

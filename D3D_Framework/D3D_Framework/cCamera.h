@@ -3,6 +3,9 @@
 class cCamera
 {
 protected:
+	D_SYNTHESIZE(D3DXVECTOR3*, m_pFollowPosition, FollowPosition);
+
+protected:
 	D_SYNTHESIZE_REF(D3DXVECTOR3, m_vEye, VecEye);
 	D3DXVECTOR3												m_vLookAt;
 	D3DXVECTOR3												m_vUp;
@@ -23,11 +26,14 @@ protected:
 	void ControlCamDistance();
 	void ControlCamRotation();
 
+private:
+	void CamFollowPosition();
+
 public:
 	cCamera();
 	virtual ~cCamera();
 
-	virtual void Setup();
+	virtual void Setup(D3DXVECTOR3* pFollowPosition = NULL);
 	virtual void Update();
 };
 

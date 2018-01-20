@@ -1,19 +1,17 @@
 #include "stdafx.h"
 #include "cMapCamera.h"
 
-
 cMapCamera::cMapCamera()
 {
 }
-
 
 cMapCamera::~cMapCamera()
 {
 }
 
-void cMapCamera::Setup()
+void cMapCamera::Setup(D3DXVECTOR3* pFollowPosition)
 {
-	cCamera::Setup();
+	cCamera::Setup(pFollowPosition);
 }
 
 void cMapCamera::Update()

@@ -244,6 +244,12 @@
     <Filter Include="소스 파일\cMainGame\cXFile\cCharacter\cXMonster">
       <UniqueIdentifier>{ceee4534-1968-4115-8eea-9579df21a621}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3DGameFramework\cCamera\cGameCamera">
+      <UniqueIdentifier>{705929a6-a52d-41de-b0d0-b1f4739fd229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D3DGameFramework\cCamera\cMapCamera">
+      <UniqueIdentifier>{bc81f60b-c6a9-48be-9330-de069f066764}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -459,12 +465,6 @@
     <ClInclude Include="cOptionUI.h">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
     </ClInclude>
-    <ClInclude Include="cGameCamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cMapCamera.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cXMonster.h">
       <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
     </ClInclude>
@@ -473,6 +473,12 @@
     </ClInclude>
     <ClInclude Include="iMap.h">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameCamera.h">
+      <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapCamera.h">
+      <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -665,12 +671,6 @@
     <ClCompile Include="cOptionUI.cpp">
       <Filter>소스 파일\cMainGame\cOption\cOptionUI</Filter>
     </ClCompile>
-    <ClCompile Include="cGameCamera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="cMapCamera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cXMonster.cpp">
       <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
     </ClCompile>
@@ -679,6 +679,12 @@
     </ClCompile>
     <ClCompile Include="iMap.cpp">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameCamera.cpp">
+      <Filter>D3DGameFramework\cCamera\cGameCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapCamera.cpp">
+      <Filter>D3DGameFramework\cCamera\cMapCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

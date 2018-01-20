@@ -3,7 +3,7 @@
 class cSkinnedMesh
 {
 protected:
-	D3DXFRAME*												m_pRootBone;
+	D_SYNTHESIZE(D3DXFRAME*, m_pRootBone, RootBone);
 
 protected:
 	ID3DXMesh*												m_pSphere;

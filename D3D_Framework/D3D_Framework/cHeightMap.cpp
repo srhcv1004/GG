@@ -156,7 +156,6 @@ bool cHeightMap::GetHeight(IN float x, OUT float & y, IN float z)
 	float fDeltaX = x - nX;
 	float fDeltaZ = z - nZ;
 
-
 	int _0 = (nZ + 0) * (D_MAPTILENUMZ) + (nX + 0);
 	int _1 = (nZ + 1) * (D_MAPTILENUMZ) + (nX + 0);
 	int _2 = (nZ + 0) * (D_MAPTILENUMZ) + (nX + 1);

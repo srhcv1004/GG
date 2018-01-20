@@ -3,7 +3,10 @@
 #include "cSkinnedMesh.h"
 
 cXPlayer::cXPlayer()
+	: m_eState(E_STATE_WAIT)
 {
+	D3DXMatrixIdentity(&m_matR);
+	D3DXMatrixIdentity(&m_matT);
 }
 
 cXPlayer::~cXPlayer()
@@ -14,6 +17,7 @@ void cXPlayer::Setup()
 {
 	cCharacter::Setup();
 
+	D3DXMatrixScaling(&m_matS, 0.05F, 0.05F, 0.05F);
 	m_fSpeed = 0.2F;
 
 	this->SetupSkinnedParts();
@@ -36,11 +40,22 @@ void cXPlayer::Update()
 			m_vecSkinnedPlayer[i]->Update();
 	}
 
-	this->PositionChangeKeyInput();
+	// 키 입력을 통해서 현재 플레이어 상태를 변경
+	this->StateChangeKeyInput();
+
+	// 플레이어 상태 변경시 알맞는 애니메이션으로 변경
+	this->AnimationChangeByState();
+
+	this->UpdatePosition();
+	this->UpdateRotation();
+
+	m_matWorldTM = m_matS * m_matR * m_matT;
 }
 
 void cXPlayer::Render()
 {
+	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
+
 	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
 	{
 		if (m_vecSkinnedPlayer[i])
@@ -52,44 +67,68 @@ void cXPlayer::SetupSkinnedParts()
 {
 	m_vecSkinnedPlayer.resize(E_PARTS_END);
 
-	cSkinnedMesh* pAllParts = new cSkinnedMesh();
-	pAllParts->Setup("XFile", "run.x");
-	pAllParts->SetMatWorldPtr(&m_matWorldTM);
-	m_vecSkinnedPlayer[E_PARTS_BODY] = pAllParts;
+	// Head parts
+	//cSkinnedMesh* pHand = new cSkinnedMesh();
+	//pHand->Setup("XFile/XPlayer", "1.x");
+	//pHand->SetMatWorldPtr(&m_matWorldTM);
+	//m_vecSkinnedPlayer[E_PARTS_HEAD] = pHand;
+
+	// Body parts
+	cSkinnedMesh* pBody = new cSkinnedMesh();
+	pBody->Setup("XFile/XPlayer", "[0]Body.x");
+	pBody->SetMatWorldPtr(&m_matWorldTM);
+	m_vecSkinnedPlayer[E_PARTS_BODY] = pBody;
+
+	// Hand parts
+	cSkinnedMesh* pHand = new cSkinnedMesh();
+	pHand->Setup("XFile/XPlayer", "[0]Hand.x");
+	pHand->SetMatWorldPtr(&m_matWorldTM);
+	m_vecSkinnedPlayer[E_PARTS_HAND] = pHand;
+
+	// Leg parts
+	cSkinnedMesh* pLeg = new cSkinnedMesh();
+	pLeg->Setup("XFile/XPlayer", "[0]Leg.x");
+	pLeg->SetMatWorldPtr(&m_matWorldTM);
+	m_vecSkinnedPlayer[E_PARTS_LEG] = pLeg;
 }
 
-void cXPlayer::PositionChangeKeyInput()
+void cXPlayer::StateChangeKeyInput()
 {
-	if (D_KEYMANAGER->IsStayKeyDown(VK_UP))
+	if (D_KEYMANAGER->IsOnceKeyDown(VK_UP))
 	{
-		m_vPosition += m_vDirection * m_fSpeed;
+		m_eState = E_STATE_RUN;
 	}
-
-	if (D_KEYMANAGER->IsStayKeyDown(VK_DOWN))
+	else if (D_KEYMANAGER->IsOnceKeyUp(VK_UP))
 	{
-		m_vPosition -= m_vDirection * m_fSpeed;
+		m_eState = E_STATE_WAIT;
 	}
+}
 
-	if (D_KEYMANAGER->IsStayKeyDown(VK_LEFT))
+void cXPlayer::AnimationChangeByState()
+{
+	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
 	{
-		m_fRotY -= 0.1F;
+		if (m_vecSkinnedPlayer[i])
+			m_vecSkinnedPlayer[i]->SetAnimationIndexBlend(m_eState);
 	}
+}
 
-	if (D_KEYMANAGER->IsStayKeyDown(VK_RIGHT))
-	{
-		m_fRotY += 0.1F;
-	}
+void cXPlayer::UpdatePosition()
+{
+	if (m_eState != E_STATE_RUN) return;
 
-	D3DXMATRIXA16 matS, matR, matT;
-
-	D3DXMatrixScaling(&matS, 0.05F, 0.05F, 0.05F);
-	D3DXMatrixTranslation(&matT, m_vPosition.x,
+	m_vPosition += m_vDirection * m_fSpeed;
+	D3DXMatrixTranslation(&m_matT, m_vPosition.x,
 		m_vPosition.y,
 		m_vPosition.z);
-	D3DXMatrixRotationY(&matR, m_fRotY);
+}
 
+void cXPlayer::UpdateRotation()
+{
+	if (D_KEYMANAGER->IsStayKeyDown(VK_LEFT)) m_fRotY -= 0.1F;
+	if (D_KEYMANAGER->IsStayKeyDown(VK_RIGHT)) m_fRotY += 0.1F;
+
+	D3DXMatrixRotationY(&m_matR, m_fRotY);
 	m_vDirection = D3DXVECTOR3(1.F, 0.F, 0.F);
-	D3DXVec3TransformNormal(&m_vDirection, &m_vDirection, &matR);
-
-	m_matWorldTM = matS * matR * matT;
+	D3DXVec3TransformNormal(&m_vDirection, &m_vDirection, &m_matR);
 }
