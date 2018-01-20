@@ -6,6 +6,10 @@ class iGrid;
 
 class cXPlayer;
 
+
+//∏ÛΩ∫≈Õ
+class cXMonsterManager;
+
 class cInGame : public cGameNode
 {
 private:
@@ -16,7 +20,7 @@ private:
 
 private:
 	cXPlayer*												m_pPlayer;
-
+	cXMonsterManager*										m_pMonster;
 public:
 	cInGame();
 	virtual ~cInGame();

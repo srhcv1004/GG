@@ -474,6 +474,12 @@
     <ClInclude Include="iMap.h">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
     </ClInclude>
+    <ClInclude Include="cXMonsterManager.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="cXNormalMonster.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -679,6 +685,12 @@
     </ClCompile>
     <ClCompile Include="iMap.cpp">
       <Filter>소스 파일\cMainGame\cMapTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cXMonsterManager.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="cXNormalMonster.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
