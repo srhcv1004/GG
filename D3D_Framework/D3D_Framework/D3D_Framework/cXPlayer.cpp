@@ -1,9 +1,12 @@
 #include "stdafx.h"
 #include "cXPlayer.h"
-#include "cSkinnedMesh.h"
+#include "cEquip.h"
+#include "cXPlayerAnimation.h"
 
 cXPlayer::cXPlayer()
 	: m_eState(E_STATE_WAIT)
+	, m_pEquip(NULL)
+	, m_pAnimation(NULL)
 {
 	D3DXMatrixIdentity(&m_matR);
 	D3DXMatrixIdentity(&m_matT);
@@ -17,34 +20,35 @@ void cXPlayer::Setup()
 {
 	cCharacter::Setup();
 
+	m_pEquip = new cEquip();
+	m_pAnimation = new cXPlayerAnimation();
+
+	m_pEquip->ConnectXPlayerAnimation(m_pAnimation);
+	m_pEquip->Setup(&m_matWorldTM);
+
+	m_pAnimation->ConnectionEquip(m_pEquip);
+	m_pAnimation->Setup(&m_eState);
+
 	D3DXMatrixScaling(&m_matS, 0.05F, 0.05F, 0.05F);
 	m_fSpeed = 0.2F;
-
-	this->SetupSkinnedParts();
 }
 
 void cXPlayer::Release()
 {
-	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
-	{
-		D_SAFE_RELEASE(m_vecSkinnedPlayer[i]);
-		D_SAFE_DELETE(m_vecSkinnedPlayer[i]);
-	}
+	D_SAFE_RELEASE(m_pEquip);
+	D_SAFE_DELETE(m_pEquip);
+
+	D_SAFE_RELEASE(m_pAnimation);
+	D_SAFE_DELETE(m_pAnimation);
 }
 
 void cXPlayer::Update()
 {
-	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
-	{
-		if (m_vecSkinnedPlayer[i])
-			m_vecSkinnedPlayer[i]->Update();
-	}
+	if (m_pEquip)
+		m_pEquip->Update();
 
-	// 키 입력을 통해서 현재 플레이어 상태를 변경
-	this->StateChangeKeyInput();
-
-	// 플레이어 상태 변경시 알맞는 애니메이션으로 변경
-	this->AnimationChangeByState();
+	if (m_pAnimation)
+		m_pAnimation->Update();
 
 	this->UpdatePosition();
 	this->UpdateRotation();
@@ -54,63 +58,11 @@ void cXPlayer::Update()
 
 void cXPlayer::Render()
 {
-	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
+	if (m_pEquip)
+		m_pEquip->Render();
 
-	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
-	{
-		if (m_vecSkinnedPlayer[i])
-			m_vecSkinnedPlayer[i]->Render();
-	}
-}
-
-void cXPlayer::SetupSkinnedParts()
-{
-	m_vecSkinnedPlayer.resize(E_PARTS_END);
-
-	// Head parts
-	//cSkinnedMesh* pHand = new cSkinnedMesh();
-	//pHand->Setup("XFile/XPlayer", "1.x");
-	//pHand->SetMatWorldPtr(&m_matWorldTM);
-	//m_vecSkinnedPlayer[E_PARTS_HEAD] = pHand;
-
-	// Body parts
-	cSkinnedMesh* pBody = new cSkinnedMesh();
-	pBody->Setup("XFile/XPlayer", "[0]Body.x");
-	pBody->SetMatWorldPtr(&m_matWorldTM);
-	m_vecSkinnedPlayer[E_PARTS_BODY] = pBody;
-
-	// Hand parts
-	cSkinnedMesh* pHand = new cSkinnedMesh();
-	pHand->Setup("XFile/XPlayer", "[0]Hand.x");
-	pHand->SetMatWorldPtr(&m_matWorldTM);
-	m_vecSkinnedPlayer[E_PARTS_HAND] = pHand;
-
-	// Leg parts
-	cSkinnedMesh* pLeg = new cSkinnedMesh();
-	pLeg->Setup("XFile/XPlayer", "[0]Leg.x");
-	pLeg->SetMatWorldPtr(&m_matWorldTM);
-	m_vecSkinnedPlayer[E_PARTS_LEG] = pLeg;
-}
-
-void cXPlayer::StateChangeKeyInput()
-{
-	if (D_KEYMANAGER->IsOnceKeyDown(VK_UP))
-	{
-		m_eState = E_STATE_RUN;
-	}
-	else if (D_KEYMANAGER->IsOnceKeyUp(VK_UP))
-	{
-		m_eState = E_STATE_WAIT;
-	}
-}
-
-void cXPlayer::AnimationChangeByState()
-{
-	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
-	{
-		if (m_vecSkinnedPlayer[i])
-			m_vecSkinnedPlayer[i]->SetAnimationIndexBlend(m_eState);
-	}
+	if (m_pAnimation)
+		m_pAnimation->Render();
 }
 
 void cXPlayer::UpdatePosition()
@@ -125,6 +77,13 @@ void cXPlayer::UpdatePosition()
 
 void cXPlayer::UpdateRotation()
 {
+	if (m_eState == E_STATE_NANMU1 ||
+		m_eState == E_STATE_NANMU2 ||
+		m_eState == E_STATE_NANMU3 ||
+		m_eState == E_STATE_NANMU4 ||
+		m_eState == E_STATE_NANMU5 ||
+		m_eState == E_STATE_NANMU6) return;
+
 	if (D_KEYMANAGER->IsStayKeyDown(VK_LEFT)) m_fRotY -= 0.1F;
 	if (D_KEYMANAGER->IsStayKeyDown(VK_RIGHT)) m_fRotY += 0.1F;
 

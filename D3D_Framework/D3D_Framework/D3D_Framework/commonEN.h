@@ -10,4 +10,3 @@ enum E_BUTTON_TAG
 	E_TAG_NONE,
 	E_TAG_END = 6
 };
-

@@ -4,17 +4,17 @@ class cSkinnedMesh
 {
 protected:
 	D_SYNTHESIZE(D3DXFRAME*, m_pRootBone, RootBone);
+	D_SYNTHESIZE(ID3DXAnimationController*, m_pAnimationController, AnimationController);
 
 protected:
 	ID3DXMesh * m_pSphere;
 
 protected:
-	ID3DXAnimationController * m_pAnimationController;
-
-protected:
 	D_SYNTHESIZE(D3DXMATRIXA16*, m_pMatWorldPtr, MatWorldPtr);
 
 protected:
+	float													m_fAniElapsedTime;
+
 	float													m_fPassedBlendTime;
 	float													m_fBlendTime;
 	bool													m_bIsBlend;
@@ -46,6 +46,7 @@ public:
 
 	void SetAnimationIndex(int nIndex);
 	void SetAnimationIndexBlend(int nIndex);
+	void RestartAnimation() { m_pAnimationController->ResetTime(); }
 
 };
 

@@ -1,34 +1,32 @@
 #pragma once
 #include "cCharacter.h"
 
-class cSkinnedMesh;
+class cEquip;
+class cXPlayerAnimation;
 
 class cXPlayer : public cCharacter
 {
 public:
 	enum E_STATE
 	{
+		E_STATE_NANMU1,
+		E_STATE_NANMU2,
+		E_STATE_NANMU3,
+		E_STATE_NANMU4,
+		E_STATE_NANMU5,
+		E_STATE_NANMU6,
 		E_STATE_RUN,
 		E_STATE_WAIT,
 		E_STATE_NONE,
-		E_STATE_END = 3
-	};
-
-public:
-	enum E_PARTS
-	{
-		E_PARTS_HEAD,
-		E_PARTS_BODY,
-		E_PARTS_HAND,
-		E_PARTS_LEG,
-		E_PARTS_END = 4
+		E_STATE_END = 9
 	};
 
 private:
-	std::vector<cSkinnedMesh*>								m_vecSkinnedPlayer;
+	D_SYNTHESIZE_REF(E_STATE, m_eState, State);
 
 private:
-	E_STATE													m_eState;
+	cEquip*													m_pEquip;
+	cXPlayerAnimation*										m_pAnimation;
 
 private:
 	D3DXMATRIXA16											m_matS;
@@ -36,11 +34,6 @@ private:
 	D3DXMATRIXA16											m_matT;
 
 private:
-	void SetupSkinnedParts();
-
-private:
-	void StateChangeKeyInput();
-	void AnimationChangeByState();
 	void UpdatePosition();
 	void UpdateRotation();
 

@@ -222,6 +222,7 @@
     <ClInclude Include="cUIText.h" />
     <ClInclude Include="cXMonster.h" />
     <ClInclude Include="cXPlayer.h" />
+    <ClInclude Include="cXPlayerAnimation.h" />
     <ClInclude Include="D3DMain.h" />
     <ClInclude Include="cImage.h" />
     <ClInclude Include="iMap.h" />
@@ -294,6 +295,7 @@
     <ClCompile Include="cUIText.cpp" />
     <ClCompile Include="cXMonster.cpp" />
     <ClCompile Include="cXPlayer.cpp" />
+    <ClCompile Include="cXPlayerAnimation.cpp" />
     <ClCompile Include="D3DMain.cpp" />
     <ClCompile Include="cImage.cpp" />
     <ClCompile Include="iMap.cpp" />

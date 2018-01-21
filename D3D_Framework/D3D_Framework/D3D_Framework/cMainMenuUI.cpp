@@ -18,6 +18,10 @@ void cMainMenuUI::Setup()
 
 void cMainMenuUI::Release()
 {
+	if (m_pRootUI)
+		m_pRootUI->Release();
+
+	//D_SAFE_DELETE(m_pRootUI);
 }
 
 void cMainMenuUI::Update()

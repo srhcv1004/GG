@@ -22,9 +22,11 @@ void cUI::Release()
 	for (size_t i = 0; i < m_vecChild.size(); i++)
 	{
 		if (m_vecChild[i])
+		{
 			m_vecChild[i]->Release();
+			D_SAFE_DELETE(m_vecChild[i]);
+		}
 	}
-	delete this;
 }
 
 void cUI::Update()

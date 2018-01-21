@@ -23,6 +23,8 @@ void cMainMenu::Setup()
 
 void cMainMenu::Release()
 {
+	D_SAFE_RELEASE(m_pUI);
+	D_SAFE_DELETE(m_pUI);
 }
 
 void cMainMenu::Update()

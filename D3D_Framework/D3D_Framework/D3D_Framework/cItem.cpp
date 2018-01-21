@@ -1,24 +1,52 @@
 #include "stdafx.h"
 #include "cItem.h"
+#include "cSkinnedMesh.h"
 
-cItem::cItem()
+// ======================================================================
+
+cXItem::cXItem()
 	: m_pXItem(NULL)
-	, m_fAbility(0.F)
 {
 }
 
-cItem::~cItem()
+cXItem::~cXItem()
 {
 }
 
-void cItem::Setup()
+void cXItem::Setup(const CHAR* pFolderName, const CHAR* pFileName)
+{
+	m_pXItem = new cSkinnedMesh();
+	m_pXItem->Setup(pFolderName, pFileName);
+}
+
+void cXItem::Release()
+{
+	cItem::Release();
+
+	D_SAFE_RELEASE(m_pXItem);
+	D_SAFE_DELETE(m_pXItem);
+}
+
+// ======================================================================
+
+
+
+// ======================================================================
+
+cBasicItem::cBasicItem()
 {
 }
 
-void cItem::Update()
+cBasicItem::~cBasicItem()
 {
 }
 
-void cItem::Render()
+void cBasicItem::Setup()
 {
 }
+
+void cBasicItem::Release()
+{
+}
+
+// ======================================================================

@@ -1,0 +1,8 @@
+ItemCount = 2
+[0]	[0]Hand.X	XFile/XItem	
+[1]	[1]Hand.X	XFile/XItem
+
+
+
+
+	

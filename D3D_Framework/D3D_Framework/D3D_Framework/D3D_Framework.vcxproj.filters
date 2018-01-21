@@ -211,9 +211,6 @@
     <Filter Include="소스 파일\cInven">
       <UniqueIdentifier>{491cb1f7-219b-4983-b87b-e6c20ae5d54c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\cEquip">
-      <UniqueIdentifier>{522c3cc8-e66b-48b7-baac-7fd6f52d75dc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\cItemManager">
       <UniqueIdentifier>{d1f386d5-4fb8-4026-84b7-2e8847f8e7cf}</UniqueIdentifier>
     </Filter>
@@ -249,6 +246,12 @@
     </Filter>
     <Filter Include="D3DGameFramework\cCamera\cInGameCamera">
       <UniqueIdentifier>{ed4ba75a-068a-4542-89b5-a34d8edee13a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerAnimation">
+      <UniqueIdentifier>{314150f8-c8b5-4ab3-8070-04a1e4de5325}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerEquip">
+      <UniqueIdentifier>{5615faf2-e08a-4a09-95e9-2a03c8c3afe6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -450,9 +453,6 @@
     <ClInclude Include="cOption.h">
       <Filter>소스 파일\cMainGame\cOption</Filter>
     </ClInclude>
-    <ClInclude Include="cEquip.h">
-      <Filter>소스 파일\cEquip</Filter>
-    </ClInclude>
     <ClInclude Include="cInven.h">
       <Filter>소스 파일\cInven</Filter>
     </ClInclude>
@@ -479,6 +479,12 @@
     </ClInclude>
     <ClInclude Include="cMapCamera.h">
       <Filter>D3DGameFramework\cCamera\cMapToolCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="cEquip.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerEquip</Filter>
+    </ClInclude>
+    <ClInclude Include="cXPlayerAnimation.h">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerAnimation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -656,9 +662,6 @@
     <ClCompile Include="cOption.cpp">
       <Filter>소스 파일\cMainGame\cOption</Filter>
     </ClCompile>
-    <ClCompile Include="cEquip.cpp">
-      <Filter>소스 파일\cEquip</Filter>
-    </ClCompile>
     <ClCompile Include="cInven.cpp">
       <Filter>소스 파일\cInven</Filter>
     </ClCompile>
@@ -685,6 +688,12 @@
     </ClCompile>
     <ClCompile Include="cMapCamera.cpp">
       <Filter>D3DGameFramework\cCamera\cMapToolCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="cEquip.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerEquip</Filter>
+    </ClCompile>
+    <ClCompile Include="cXPlayerAnimation.cpp">
+      <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerAnimation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
