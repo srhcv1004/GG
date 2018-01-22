@@ -1,4 +1,4 @@
-ItemCount = 9
+ItemCount = 22
 [0]	[0]Leg.X	XFile/XItem/Leg	
 [1]	[1]Leg.X	XFile/XItem/Leg
 [2]	[2]Leg.X	XFile/XItem/Leg
@@ -8,6 +8,24 @@ ItemCount = 9
 [6]	[6]Leg.X	XFile/XItem/Leg
 [7]	[7]Leg.X	XFile/XItem/Leg
 [8]	[8]Leg.X	XFile/XItem/Leg
+[9]	[9]Leg.X	XFile/XItem/Leg
+[10]	[10]Leg.X	XFile/XItem/Leg
+[11]	[11]Leg.X	XFile/XItem/Leg
+[12]	[12]Leg.X	XFile/XItem/Leg
+[13]	[13]Leg.X	XFile/XItem/Leg
+[14]	[14]Leg.X	XFile/XItem/Leg
+[15]	[15]Leg.X	XFile/XItem/Leg
+[16]	[16]Leg.X	XFile/XItem/Leg
+[17]	[17]Leg.X	XFile/XItem/Leg
+[18]	[18]Leg.X	XFile/XItem/Leg
+[19]	[19]Leg.X	XFile/XItem/Leg
+[20]	[20]Leg.X	XFile/XItem/Leg
+[21]	[21]Leg.X	XFile/XItem/Leg
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-ItemCount = 9
+ItemCount = 22
 [0]	[0]Hand.X	XFile/XItem/Hand	
 [1]	[1]Hand.X	XFile/XItem/Hand
 [2]	[2]Hand.X	XFile/XItem/Hand
@@ -8,6 +8,19 @@ ItemCount = 9
 [6]	[6]Hand.X	XFile/XItem/Hand
 [7]	[7]Hand.X	XFile/XItem/Hand
 [8]	[8]Hand.X	XFile/XItem/Hand
+[9]	[9]Hand.X	XFile/XItem/Hand
+[10]	[10]Hand.X	XFile/XItem/Hand
+[11]	[11]Hand.X	XFile/XItem/Hand
+[12]	[12]Hand.X	XFile/XItem/Hand
+[13]	[13]Hand.X	XFile/XItem/Hand
+[14]	[14]Hand.X	XFile/XItem/Hand
+[15]	[15]Hand.X	XFile/XItem/Hand
+[16]	[16]Hand.X	XFile/XItem/Hand
+[17]	[17]Hand.X	XFile/XItem/Hand
+[18]	[18]Hand.X	XFile/XItem/Hand
+[19]	[19]Hand.X	XFile/XItem/Hand
+[20]	[20]Hand.X	XFile/XItem/Hand
+[21]	[21]Hand.X	XFile/XItem/Hand
 
 
 

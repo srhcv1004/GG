@@ -233,6 +233,8 @@ void cSkinnedMesh::RenderBoneLines(ST_BONE* pBone, ST_BONE* pParent, D3DXMATRIXA
 
 void cSkinnedMesh::SetAnimationIndex(int nIndex)
 {
+	if (!m_pAnimationController) return;
+
 	int nMax = m_pAnimationController->GetNumAnimationSets();
 	if (nIndex > nMax)	nIndex = nIndex % nMax;
 
@@ -245,6 +247,8 @@ void cSkinnedMesh::SetAnimationIndex(int nIndex)
 
 void cSkinnedMesh::SetAnimationIndexBlend(int nIndex)
 {
+	if (!m_pAnimationController) return;
+
 	m_bIsBlend = true;
 	m_fPassedBlendTime = 0.0F;
 

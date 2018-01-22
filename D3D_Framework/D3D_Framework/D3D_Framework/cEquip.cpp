@@ -22,9 +22,9 @@ void cEquip::Setup(D3DXMATRIXA16* pXPlayerWorldTM)
 	m_pXPlayerWorldTM = pXPlayerWorldTM;
 
 	m_arChangePartsNum[E_PARTS_HEAD] = 0;
-	m_arChangePartsNum[E_PARTS_BODY] = 8;
-	m_arChangePartsNum[E_PARTS_HAND] = 8;
-	m_arChangePartsNum[E_PARTS_LEG] = 8;
+	m_arChangePartsNum[E_PARTS_BODY] = 17;
+	m_arChangePartsNum[E_PARTS_HAND] = 17;
+	m_arChangePartsNum[E_PARTS_LEG] = 17;
 	m_arChangePartsNum[E_PARTS_HAIR] = 0;
 
 	this->SetupParts();
@@ -156,11 +156,30 @@ void cEquip::RenderChangeKind()
 			strncpy_s(str, 512, "[Leg 체인지]", 512);
 		}
 		break;
+
+		case cEquip::E_PARTS_HAIR:
+		{
+			strncpy_s(str, 512, "[Hair 체인지]", 512);
+		}
+		break;
+
+		case cEquip::E_PARTS_HEAD:
+		{
+			strncpy_s(str, 512, "[Head 체인지]", 512);
+		}
+		break;
 	}
 
 	D_FONTMANAGER->DrawFontText("TimerFont", str,
 		NULL,
 		RectMake(D_WINSIZEX / 2, D_WINSIZEY / 2, 0, 0),
+		D3DCOLOR_XRGB(255, 255, 255));
+
+	sprintf_s(str, "[%d번 아이템]", m_arChangePartsNum[m_eChangePartKind]);
+	
+	D_FONTMANAGER->DrawFontText("TimerFont", str,
+		NULL,
+		RectMake(D_WINSIZEX / 2, D_WINSIZEY / 2 + 20, 0, 0),
 		D3DCOLOR_XRGB(255, 255, 255));
 }
 
@@ -181,16 +200,45 @@ void cEquip::ChangeParts()
 		m_eChangePartKind = E_PARTS_LEG;
 	}
 	
+	if (D_KEYMANAGER->IsOnceKeyDown(VK_F4))
+	{
+		m_eChangePartKind = E_PARTS_HAIR;
+	}
+
+	if (D_KEYMANAGER->IsOnceKeyDown(VK_F5))
+	{
+		m_eChangePartKind = E_PARTS_HEAD;
+	}
 
 	if (D_KEYMANAGER->IsOnceKeyDown(VK_SPACE))
 	{
-		if (m_arChangePartsNum[m_eChangePartKind] == 0) m_arChangePartsNum[m_eChangePartKind] = 1;
-		else if (m_arChangePartsNum[m_eChangePartKind] == 1) m_arChangePartsNum[m_eChangePartKind] = 0;
+
+		size_t sizeMap = D_ITEMMANAGER->GetMapXItem(cItemManager::E_PARTS(m_eChangePartKind));
+
+		if (sizeMap - 1 > m_arChangePartsNum[m_eChangePartKind])
+			m_arChangePartsNum[m_eChangePartKind] += 1;
+		else
+			m_arChangePartsNum[m_eChangePartKind] = 0;
 
 		cXItem* pXParts =
 			(cXItem*)(D_ITEMMANAGER->FindItem(m_arChangePartsNum[m_eChangePartKind], cItemManager::E_PARTS(m_eChangePartKind)));
 		m_vecSkinnedPlayer[m_eChangePartKind] = pXParts->GetXItem();
-		m_vecSkinnedPlayer[m_eChangePartKind]->SetMatWorldPtr(m_pXPlayerWorldTM);
+
+		switch (m_eChangePartKind)
+		{
+			case cEquip::E_PARTS_HEAD:
+			case cEquip::E_PARTS_HAIR:
+			{
+				m_vecSkinnedPlayer[m_eChangePartKind]->SetMatWorldPtr(NULL);
+			}
+			break;
+
+			default:
+			{
+				m_vecSkinnedPlayer[m_eChangePartKind]->SetMatWorldPtr(m_pXPlayerWorldTM);
+			}
+			break;
+		}
 
 		m_pXPlayerAnimation->AnimationChangeByState();
 	}

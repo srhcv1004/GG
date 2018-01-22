@@ -4,9 +4,11 @@
 #include "cGrid.h"
 #include "cSprite.h"
 #include "cXPlayer.h"
+#include "cSkinnedMesh.h"
 
 cMapCastle::cMapCastle()
 	: m_pLineGrid(NULL)
+	, m_pWeaponTest(NULL)
 {
 }
 
@@ -21,11 +23,15 @@ void cMapCastle::Setup()
 	m_pLineGrid = new cLineGrid();
 	m_pLineGrid->Setup();
 
-	m_pPlayer = new cXPlayer();
-	m_pPlayer->Setup();
+	//m_pPlayer = new cXPlayer();
+	//m_pPlayer->Setup();
 
 	m_pCamera = new cGameCamera();
-	m_pCamera->Setup(&m_pPlayer->GetPosition());
+	m_pCamera->Setup();
+	//&m_pPlayer->GetPosition()
+
+	m_pWeaponTest = new cSkinnedMesh();
+	m_pWeaponTest->Setup("XFile/XItem/Weapon", "[0]Weapon.X");
 }
 
 void cMapCastle::Release()
@@ -51,8 +57,11 @@ void cMapCastle::Update()
 	if (m_pLineGrid)
 		m_pLineGrid->Update();
 
-	if (m_pPlayer)
-		m_pPlayer->Update();
+	//if (m_pPlayer)
+	//	m_pPlayer->Update();
+
+	if (m_pWeaponTest)
+		m_pWeaponTest->Update();
 
 	this->ChangeWorldMapScene();
 }
@@ -64,8 +73,11 @@ void cMapCastle::Render()
 	if (m_pLineGrid)
 		m_pLineGrid->Render();
 
-	if (m_pPlayer)
-		m_pPlayer->Render();
+	//if (m_pPlayer)
+	//	m_pPlayer->Render();
+
+	if (m_pWeaponTest)
+		m_pWeaponTest->Render();
 
 	this->RenderNowMapInfo();
 }

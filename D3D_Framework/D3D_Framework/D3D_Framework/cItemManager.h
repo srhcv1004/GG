@@ -38,5 +38,6 @@ public:
 	void Release();
 
 	cItem* FindItem(DWORD dwItemKey, cItemManager::E_PARTS eParts);
+	size_t GetMapXItem(cItemManager::E_PARTS eParts) { return m_mapXItem[eParts].size(); }
 };
 

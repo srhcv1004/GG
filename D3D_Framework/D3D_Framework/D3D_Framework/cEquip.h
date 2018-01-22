@@ -12,7 +12,8 @@ public:
 		E_PARTS_HAND,
 		E_PARTS_LEG,
 		E_PARTS_HAIR,
-		E_PARTS_END = 5
+		E_PARTS_WEAPON,
+		E_PARTS_END = 6
 	};
 
 private:
