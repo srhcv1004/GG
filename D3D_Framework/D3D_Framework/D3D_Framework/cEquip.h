@@ -11,7 +11,8 @@ public:
 		E_PARTS_BODY,
 		E_PARTS_HAND,
 		E_PARTS_LEG,
-		E_PARTS_END = 4
+		E_PARTS_HAIR,
+		E_PARTS_END = 5
 	};
 
 private:
@@ -22,7 +23,7 @@ private:
 
 private:
 	D3DXMATRIXA16*											m_pXPlayerWorldTM;
-	D3DXMATRIXA16*											m_pXHeadWorldTM;
+	D3DXMATRIXA16											m_matXHeadWorldTM;
 
 private:
 	E_PARTS													m_eChangePartKind;

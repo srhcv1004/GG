@@ -9,6 +9,7 @@ cEquip::cEquip()
 	, m_eChangePartKind(E_PARTS_BODY)
 	, m_arChangePartsNum()
 {
+	D3DXMatrixIdentity(&m_matXHeadWorldTM);
 }
 
 cEquip::~cEquip()
@@ -51,20 +52,24 @@ void cEquip::Render()
 	{
 		if (i == 0)
 		{
-			//D3DXMATRIXA16 matWorld, matR;
-			//ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
+			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
+			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
 
-			//ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Head");
+			D_DEVICE->SetTransform(D3DTS_WORLD, &pFindBone->matWorldTM);
 
-			//D3DXMatrixRotationYawPitchRoll(&matR, D3DX_PI / 2.F, 0.F, D3DX_PI / 2.F);
+			if (m_vecSkinnedPlayer[i])
+				m_vecSkinnedPlayer[i]->Render();
+		}
+		else if (i == 4)
+		{
+			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
+			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
 
-			//matWorld = matR;
-			//if (pFindBone)
-			//{
-			//	matWorld *= pFindBone->matWorldTM;
-			//}
+			D3DXMATRIXA16 matWorld, matT;
+			D3DXMatrixTranslation(&matT, 3.F, 0.F, 0.F);
+			matWorld = matT * pFindBone->matWorldTM;
 
-			//D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
+			D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
 
 			if (m_vecSkinnedPlayer[i])
 				m_vecSkinnedPlayer[i]->Render();
@@ -90,7 +95,13 @@ void cEquip::SetupParts()
 	cSkinnedMesh* pHead = new cSkinnedMesh();
 	pHead->Setup("XFile/XItem", "[0]Head.x");
 	m_vecSkinnedPlayer[E_PARTS_HEAD] = pHead;
-	m_vecSkinnedPlayer[E_PARTS_HEAD]->SetMatWorldPtr(m_pXPlayerWorldTM);
+	m_vecSkinnedPlayer[E_PARTS_HEAD]->SetMatWorldPtr(&m_matXHeadWorldTM);
+
+	// Head parts
+	cSkinnedMesh* pHair = new cSkinnedMesh();
+	pHair->Setup("XFile/XItem", "[0]Hair.x");
+	m_vecSkinnedPlayer[E_PARTS_HAIR] = pHair;
+	m_vecSkinnedPlayer[E_PARTS_HAIR]->SetMatWorldPtr(&m_matXHeadWorldTM);
 
 	// Body parts
 	cXItem* pXBody = 
