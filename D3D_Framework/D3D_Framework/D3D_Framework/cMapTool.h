@@ -28,11 +28,13 @@ private:
 	void SetLight();
 
 	void Picking();
+	void SetKeys();
+
 	void SetHeight();
 	void DrawBrush();
 
-	void Save();
-	void Load();
+	void Save(IN char* szFolder, IN char* szFileName);
+	void Load(IN char* szFolder, IN char* szFileName);
 
 public:
 	cMapTool();
