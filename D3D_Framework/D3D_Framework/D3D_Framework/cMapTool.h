@@ -13,18 +13,26 @@ private:
 		D3DCOLOR		c;
 
 		enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
-		//....또 뭐가 필요할까..
 	};
 
 private:
 	cCamera*												m_pCamera;
+	cHeightMap*												m_pHeightMap;
 
 	DWORD													m_dwCellSize;
 	D3DXVECTOR3												m_vBrushPos;
 
-	cHeightMap*												m_pHeightMap;
+	float													m_fDist;
 
-	LPD3DXMESH												m_pMesh;
+private:
+	void SetLight();
+
+	void Picking();
+	void SetHeight();
+	void DrawBrush();
+
+	void Save();
+	void Load();
 
 public:
 	cMapTool();
@@ -33,13 +41,5 @@ public:
 	virtual void Setup();
 	virtual void Update();
 	virtual void Render();
-
-	void SetLight();
-
-	void Picking();
-	void DrawBrush();
-
-	void Save();
-	void Load();
 };
 

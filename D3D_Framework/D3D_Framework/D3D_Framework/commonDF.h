@@ -22,8 +22,8 @@
 #define D_GRIDHALFSIZEZ										D_TILENUMZ * D_TILESIZEZ / 2.F
 
 //youngju ==============================================================================================
-#define D_MAPTILENUMX										(100)
-#define D_MAPTILENUMZ										(100)
+#define D_MAPTILENUMX										(200)
+#define D_MAPTILENUMZ										(200)
 #define D_MAPTILESIZE										(0.2f)
 
 #define D_MAPTILEHALFSIZE									(D_MAPTILESIZE / 2.F)

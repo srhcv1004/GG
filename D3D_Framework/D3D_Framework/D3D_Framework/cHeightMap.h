@@ -4,11 +4,14 @@
 class cHeightMap : public iMap
 {
 private:
-	D_SYNTHESIZE_REF(std::vector<D3DXVECTOR3>, m_vecVertex, VecVertex);
+	std::vector<DWORD>										m_vecIndex;
+	D_SYNTHESIZE_REF(std::vector<ST_PNT_VERTEX>, m_vecVertex, VecVertex);
+	D_SYNTHESIZE(LPD3DXMESH, m_mapMesh, MapMesh);
 
-	LPD3DXMESH												m_mapMesh;
 	D3DXMATRIXA16											m_matWorld;
 	D3DMATERIAL9											m_mtrl;
+
+	LPDIRECT3DVERTEXBUFFER9									m_pVB;
 
 public:
 	cHeightMap();
