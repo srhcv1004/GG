@@ -1,0 +1,21 @@
+ItemCount = 9
+[0]	[0]Hand.X	XFile/XItem/Hand	
+[1]	[1]Hand.X	XFile/XItem/Hand
+[2]	[2]Hand.X	XFile/XItem/Hand
+[3]	[3]Hand.X	XFile/XItem/Hand
+[4]	[4]Hand.X	XFile/XItem/Hand
+[5]	[5]Hand.X	XFile/XItem/Hand
+[6]	[6]Hand.X	XFile/XItem/Hand
+[7]	[7]Hand.X	XFile/XItem/Hand
+[8]	[8]Hand.X	XFile/XItem/Hand
+
+
+
+
+
+
+
+
+
+
+	

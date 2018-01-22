@@ -4,7 +4,7 @@
 cCamera::cCamera()
 	: m_pFollowPosition(NULL)
 	, m_vEye(0.F, 0.F, 0.F)
-	, m_vLookAt(0.F, 1.5, 0.F)
+	, m_vLookAt(0.F, 0.F, 0.F)
 	, m_vUp(0.F, 0.F, 0.F)
 	, m_ptPrevMouse()
 	, m_fCamRotX(0.F)
@@ -114,4 +114,6 @@ void cCamera::CamFollowPosition()
 
 	m_vLookAt = (*m_pFollowPosition);
 	m_vEye = m_vEye + (*m_pFollowPosition);
+
+	m_vLookAt.y = 2.F;
 }

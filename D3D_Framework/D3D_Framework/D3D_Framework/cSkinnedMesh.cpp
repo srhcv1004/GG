@@ -59,7 +59,7 @@ void cSkinnedMesh::Update()
 
 	// Frame & Mesh Code
 
-	if (m_pMatWorldPtr) UpdateMatWorldTM((ST_BONE*)m_pRootBone, m_pMatWorldPtr);
+	UpdateMatWorldTM((ST_BONE*)m_pRootBone, m_pMatWorldPtr);
 	this->UpdateSkinnedMesh((ST_BONE*)m_pRootBone);
 }
 

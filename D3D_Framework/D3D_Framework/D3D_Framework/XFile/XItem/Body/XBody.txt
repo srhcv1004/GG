@@ -1,0 +1,22 @@
+ItemCount = 9
+[0]	[0]Body.x	XFile/XItem/Body
+[1]	[1]Body.x	XFile/XItem/Body
+[2]	[2]Body.x	XFile/XItem/Body
+[3]	[3]Body.x	XFile/XItem/Body
+[4]	[4]Body.x	XFile/XItem/Body
+[5]	[5]Body.x	XFile/XItem/Body
+[6]	[6]Body.x	XFile/XItem/Body
+[7]	[7]Body.x	XFile/XItem/Body
+[8]	[8]Body.x	XFile/XItem/Body
+
+
+
+
+
+
+
+
+
+
+
+	

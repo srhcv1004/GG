@@ -9,6 +9,7 @@ cEquip::cEquip()
 	, m_eChangePartKind(E_PARTS_BODY)
 	, m_arChangePartsNum()
 {
+	D3DXMatrixIdentity(&m_matXHeadLocalTM);
 	D3DXMatrixIdentity(&m_matXHeadWorldTM);
 }
 
@@ -19,7 +20,15 @@ cEquip::~cEquip()
 void cEquip::Setup(D3DXMATRIXA16* pXPlayerWorldTM)
 {
 	m_pXPlayerWorldTM = pXPlayerWorldTM;
+
+	m_arChangePartsNum[E_PARTS_HEAD] = 0;
+	m_arChangePartsNum[E_PARTS_BODY] = 8;
+	m_arChangePartsNum[E_PARTS_HAND] = 8;
+	m_arChangePartsNum[E_PARTS_LEG] = 8;
+	m_arChangePartsNum[E_PARTS_HAIR] = 0;
+
 	this->SetupParts();
+	//this->SetupMaterial();
 }
 
 void cEquip::Release()
@@ -44,46 +53,40 @@ void cEquip::Update()
 
 void cEquip::Render()
 {
-	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
-
 	this->RenderChangeKind();
+
+	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
 	{
-		if (i == 0)
+		if (!m_vecSkinnedPlayer[i]) continue;
+
+		ST_BONE* pBoneBody = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
+		ST_BONE* pFindBoneBody = (ST_BONE*)D3DXFrameFind(pBoneBody, "Bip01-Neck");
+
+		D3DXMATRIXA16 matWorld;
+		D3DXMatrixIdentity(&matWorld);
+
+		switch (i)
 		{
-			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
-			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
+			case E_PARTS_HEAD:
+			{
+				matWorld = pFindBoneBody->matWorldTM;
+			}
+			break;
 
-			D_DEVICE->SetTransform(D3DTS_WORLD, &pFindBone->matWorldTM);
+			case E_PARTS_HAIR:
+			{
+				ST_BONE* pBoneHead = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_HEAD]->GetRootBone();
+				ST_BONE* pFindBoneHead = (ST_BONE*)D3DXFrameFind(pBoneHead, "Dummy_Face");
 
-			if (m_vecSkinnedPlayer[i])
-				m_vecSkinnedPlayer[i]->Render();
+				matWorld = pFindBoneHead->matWorldTM * pFindBoneBody->matWorldTM;
+			}
+			break;
 		}
-		else if (i == 4)
-		{
-			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
-			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
 
-			D3DXMATRIXA16 matWorld, matT;
-			D3DXMatrixTranslation(&matT, 3.F, 0.F, 0.F);
-			matWorld = matT * pFindBone->matWorldTM;
-
-			D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
-
-			if (m_vecSkinnedPlayer[i])
-				m_vecSkinnedPlayer[i]->Render();
-		}
-		else
-		{
-			D3DXMATRIXA16 matWorld;
-			D3DXMatrixIdentity(&matWorld);
-
-			D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
-
-			if (m_vecSkinnedPlayer[i])
-				m_vecSkinnedPlayer[i]->Render();
-		}
+		D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
+		m_vecSkinnedPlayer[i]->Render();
 	}
 }
 
@@ -91,19 +94,19 @@ void cEquip::SetupParts()
 {
 	m_vecSkinnedPlayer.resize(E_PARTS_END);
 
-	// Head parts
-	cSkinnedMesh* pHead = new cSkinnedMesh();
-	pHead->Setup("XFile/XItem", "[0]Head.x");
-	m_vecSkinnedPlayer[E_PARTS_HEAD] = pHead;
-	m_vecSkinnedPlayer[E_PARTS_HEAD]->SetMatWorldPtr(&m_matXHeadWorldTM);
+	//// Head parts
+	cXItem* pXHead =
+		(cXItem*)(D_ITEMMANAGER->FindItem(m_arChangePartsNum[E_PARTS_HEAD], cItemManager::E_PARTS_HEAD));
+	m_vecSkinnedPlayer[E_PARTS_HEAD] = pXHead->GetXItem();
+	m_vecSkinnedPlayer[E_PARTS_HEAD]->SetMatWorldPtr(NULL);
 
-	// Head parts
-	cSkinnedMesh* pHair = new cSkinnedMesh();
-	pHair->Setup("XFile/XItem", "[0]Hair.x");
-	m_vecSkinnedPlayer[E_PARTS_HAIR] = pHair;
-	m_vecSkinnedPlayer[E_PARTS_HAIR]->SetMatWorldPtr(&m_matXHeadWorldTM);
+	//// Head parts
+	cXItem* pXHair =
+		(cXItem*)(D_ITEMMANAGER->FindItem(m_arChangePartsNum[E_PARTS_HAIR], cItemManager::E_PARTS_HAIR));
+	m_vecSkinnedPlayer[E_PARTS_HAIR] = pXHair->GetXItem();
+	m_vecSkinnedPlayer[E_PARTS_HAIR]->SetMatWorldPtr(NULL);
 
-	// Body parts
+	//Body parts
 	cXItem* pXBody = 
  		(cXItem*)(D_ITEMMANAGER->FindItem(m_arChangePartsNum[E_PARTS_BODY], cItemManager::E_PARTS_BODY));
 	m_vecSkinnedPlayer[E_PARTS_BODY] = pXBody->GetXItem();
@@ -120,6 +123,14 @@ void cEquip::SetupParts()
 		(cXItem*)(D_ITEMMANAGER->FindItem(m_arChangePartsNum[E_PARTS_LEG], cItemManager::E_PARTS_LEG));
 	m_vecSkinnedPlayer[E_PARTS_LEG] = pXLeg->GetXItem();
 	m_vecSkinnedPlayer[E_PARTS_LEG]->SetMatWorldPtr(m_pXPlayerWorldTM);
+}
+
+void cEquip::SetupMaterial()
+{
+	ZeroMemory(&m_sD3DMaterial, sizeof(D3DMATERIAL9));
+	m_sD3DMaterial.Diffuse = D3DXCOLOR(1.F, 1.F, 1.F, 1.F);
+	m_sD3DMaterial.Ambient = D3DXCOLOR(1.F, 1.F, 1.F, 1.F);
+	m_sD3DMaterial.Specular = D3DXCOLOR(1.F, 1.F, 1.F, 1.F);
 }
 
 void cEquip::RenderChangeKind()

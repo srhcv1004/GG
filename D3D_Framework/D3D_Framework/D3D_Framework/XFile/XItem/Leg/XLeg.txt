@@ -1,0 +1,19 @@
+ItemCount = 9
+[0]	[0]Leg.X	XFile/XItem/Leg	
+[1]	[1]Leg.X	XFile/XItem/Leg
+[2]	[2]Leg.X	XFile/XItem/Leg
+[3]	[3]Leg.X	XFile/XItem/Leg
+[4]	[4]Leg.X	XFile/XItem/Leg
+[5]	[5]Leg.X	XFile/XItem/Leg
+[6]	[6]Leg.X	XFile/XItem/Leg
+[7]	[7]Leg.X	XFile/XItem/Leg
+[8]	[8]Leg.X	XFile/XItem/Leg
+
+
+
+
+
+
+
+
+

@@ -69,6 +69,11 @@ void cXPlayer::UpdatePosition()
 {
 	if (m_eState != E_STATE_RUN) return;
 
+	if (D_KEYMANAGER->IsStayKeyDown('F'))
+	{
+		m_vPosition.y++;
+	}
+
 	m_vPosition += m_vDirection * m_fSpeed;
 	D3DXMatrixTranslation(&m_matT, m_vPosition.x,
 		m_vPosition.y,

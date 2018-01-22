@@ -196,7 +196,7 @@ void cMapTool::DrawBrush()
 	}
 }
 
-void cMapTool::Save(IN char* szFolder, IN char* szFileName)
+void cMapTool::Save(IN const char* szFolder, IN const char* szFileName)
 {
 	FILE* fp = NULL;
 
@@ -219,7 +219,7 @@ void cMapTool::Save(IN char* szFolder, IN char* szFileName)
 	fclose(fp);
 }
 
-void cMapTool::Load(IN char* szFolder, IN char* szFileName)
+void cMapTool::Load(IN const char* szFolder, IN const char* szFileName)
 {
 	FILE* fp = NULL;
 

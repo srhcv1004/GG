@@ -16,6 +16,9 @@ public:
 	};
 
 private:
+	D3DMATERIAL9											m_sD3DMaterial;
+
+private:
 	cXPlayerAnimation*										m_pXPlayerAnimation;
 
 private:
@@ -23,6 +26,8 @@ private:
 
 private:
 	D3DXMATRIXA16*											m_pXPlayerWorldTM;
+
+	D3DXMATRIXA16											m_matXHeadLocalTM;
 	D3DXMATRIXA16											m_matXHeadWorldTM;
 
 private:
@@ -33,6 +38,7 @@ private:
 
 private:
 	void SetupParts();
+	void SetupMaterial();
 
 private:
 	void RenderChangeKind();
