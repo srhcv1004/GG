@@ -23,7 +23,7 @@
     <ProjectGuid>{C8018301-02FC-4D6B-9C65-573989B98208}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>D3DFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -182,7 +182,8 @@
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cHeightMap.h" />
     <ClInclude Include="cImageManager.h" />
-    <ClInclude Include="cInGame.h" />
+    <ClInclude Include="cMap.h" />
+    <ClInclude Include="cMapCastle.h" />
     <ClInclude Include="cInterpolation.h" />
     <ClInclude Include="cInven.h" />
     <ClInclude Include="cItem.h" />
@@ -193,7 +194,9 @@
     <ClInclude Include="cCubeManNpc.h" />
     <ClInclude Include="cMainMenuUI.h" />
     <ClInclude Include="cMapCamera.h" />
+    <ClInclude Include="cMapCave.h" />
     <ClInclude Include="cMapTool.h" />
+    <ClInclude Include="cMapWorld.h" />
     <ClInclude Include="cObjLoadManager.h" />
     <ClInclude Include="commonDF.h" />
     <ClInclude Include="commonEN.h" />
@@ -260,7 +263,8 @@
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cHeightMap.cpp" />
     <ClCompile Include="cImageManager.cpp" />
-    <ClCompile Include="cInGame.cpp" />
+    <ClCompile Include="cMap.cpp" />
+    <ClCompile Include="cMapCastle.cpp" />
     <ClCompile Include="cInterpolation.cpp" />
     <ClCompile Include="cInven.cpp" />
     <ClCompile Include="cItem.cpp" />
@@ -272,7 +276,9 @@
     <ClCompile Include="cCubeManPlayer.cpp" />
     <ClCompile Include="cMainMenuUI.cpp" />
     <ClCompile Include="cMapCamera.cpp" />
+    <ClCompile Include="cMapCave.cpp" />
     <ClCompile Include="cMapTool.cpp" />
+    <ClCompile Include="cMapWorld.cpp" />
     <ClCompile Include="cObjLoadManager.cpp" />
     <ClCompile Include="cOption.cpp" />
     <ClCompile Include="cOptionUI.cpp" />

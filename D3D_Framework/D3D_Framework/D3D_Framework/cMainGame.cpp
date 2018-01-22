@@ -1,10 +1,14 @@
 #include "stdafx.h"
 #include "cMainGame.h"
 #include "cCamera.h"
-#include "cInGame.h"
 #include "cMainMenu.h"
 #include "cMapTool.h"
 #include "cOption.h"
+
+#include "cMap.h"
+#include "cMapCastle.h"
+#include "cMapCave.h"
+#include "cMapWorld.h"
 
 cMainGame::cMainGame()
 {
@@ -54,8 +58,14 @@ void cMainGame::AddScenes()
 	cGameNode* pMainMenu = new cMainMenu();
 	D_SCENEMANAGER->AddScene("MainMenuScene", pMainMenu);
 
-	cGameNode* pInGame = new cInGame();
-	D_SCENEMANAGER->AddScene("InGameScene", pInGame);
+	cGameNode* pMapCave = new cMapCave();
+	D_SCENEMANAGER->AddScene("MapCaveScene", pMapCave);
+
+	cGameNode* pMapCastle = new cMapCastle();
+	D_SCENEMANAGER->AddScene("MapCastleScene", pMapCastle);
+
+	cGameNode* pMapWorld = new cMapWorld();
+	D_SCENEMANAGER->AddScene("MapWorldScene", pMapWorld);
 
 	cGameNode* pMapTool = new cMapTool();
 	D_SCENEMANAGER->AddScene("MapToolScene", pMapTool);

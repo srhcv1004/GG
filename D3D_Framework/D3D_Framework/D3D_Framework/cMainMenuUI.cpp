@@ -42,7 +42,7 @@ void cMainMenuUI::OnClickButton(cUIButton* pSender, E_BUTTON_TAG eButtonTag)
 	{
 		case E_BUTTON_TAG::E_TAG_INGAMESCENE:
 		{
-			D_SCENEMANAGER->ChangeScene("InGameScene");
+			D_SCENEMANAGER->ChangeScene("MapCastleScene");
 		}
 		break;
 

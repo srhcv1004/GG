@@ -91,9 +91,6 @@
     <Filter Include="소스 파일\cMainGame\cMainMenu">
       <UniqueIdentifier>{b655ae3e-f5ac-4073-be62-b28f48fb9346}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\cMainGame\cInGame">
-      <UniqueIdentifier>{92d5fe71-ceda-4d26-9f28-1778fa7d43b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="D3DGameFramework\manager\cSoundManager">
       <UniqueIdentifier>{c785c990-e091-4f65-819f-eb8e2150652a}</UniqueIdentifier>
     </Filter>
@@ -253,6 +250,18 @@
     <Filter Include="소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerEquip">
       <UniqueIdentifier>{5615faf2-e08a-4a09-95e9-2a03c8c3afe6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\cMainGame\cMap">
+      <UniqueIdentifier>{92d5fe71-ceda-4d26-9f28-1778fa7d43b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cMainGame\cMap\cMapCastle">
+      <UniqueIdentifier>{c581e095-bceb-4cf8-9446-ef6f78889c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cMainGame\cMap\cMapWorld">
+      <UniqueIdentifier>{68517edc-251b-4d81-a812-f81638001aed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\cMainGame\cMap\cMapCave">
+      <UniqueIdentifier>{9122340b-e98e-4bcc-9729-c7a88a840f5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -317,9 +326,6 @@
     </ClInclude>
     <ClInclude Include="cSceneManager.h">
       <Filter>D3DGameFramework\manager\cSceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="cInGame.h">
-      <Filter>소스 파일\cMainGame\cInGame</Filter>
     </ClInclude>
     <ClInclude Include="cSoundManager.h">
       <Filter>D3DGameFramework\manager\cSoundManager</Filter>
@@ -486,6 +492,18 @@
     <ClInclude Include="cXPlayerAnimation.h">
       <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerAnimation</Filter>
     </ClInclude>
+    <ClInclude Include="cMapCastle.h">
+      <Filter>소스 파일\cMainGame\cMap\cMapCastle</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapWorld.h">
+      <Filter>소스 파일\cMainGame\cMap\cMapWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapCave.h">
+      <Filter>소스 파일\cMainGame\cMap\cMapCave</Filter>
+    </ClInclude>
+    <ClInclude Include="cMap.h">
+      <Filter>소스 파일\cMainGame\cMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -532,9 +550,6 @@
     </ClCompile>
     <ClCompile Include="cSceneManager.cpp">
       <Filter>D3DGameFramework\manager\cSceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="cInGame.cpp">
-      <Filter>소스 파일\cMainGame\cInGame</Filter>
     </ClCompile>
     <ClCompile Include="cMainMenu.cpp">
       <Filter>소스 파일\cMainGame\cMainMenu</Filter>
@@ -694,6 +709,18 @@
     </ClCompile>
     <ClCompile Include="cXPlayerAnimation.cpp">
       <Filter>소스 파일\cMainGame\cXFile\cCharacter\cXPlayer\cXPlayerAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapCastle.cpp">
+      <Filter>소스 파일\cMainGame\cMap\cMapCastle</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapWorld.cpp">
+      <Filter>소스 파일\cMainGame\cMap\cMapWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapCave.cpp">
+      <Filter>소스 파일\cMainGame\cMap\cMapCave</Filter>
+    </ClCompile>
+    <ClCompile Include="cMap.cpp">
+      <Filter>소스 파일\cMainGame\cMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
