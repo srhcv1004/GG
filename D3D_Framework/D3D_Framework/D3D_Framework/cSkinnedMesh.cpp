@@ -58,19 +58,14 @@ void cSkinnedMesh::Update()
 	this->UpdateAnimation();
 
 	// Frame & Mesh Code
-	UpdateMatWorldTM((ST_BONE*)m_pRootBone, m_pMatWorldPtr);
+
+	if (m_pMatWorldPtr) UpdateMatWorldTM((ST_BONE*)m_pRootBone, m_pMatWorldPtr);
 	this->UpdateSkinnedMesh((ST_BONE*)m_pRootBone);
 }
 
 void cSkinnedMesh::Render()
 {
-	//this->RenderBones((ST_BONE*)m_pRootBone, NULL);
 	this->RenderSkinnedMesh((ST_BONE*)m_pRootBone);
-
-	D3DXMATRIXA16 matW;
-	D3DXMatrixIdentity(&matW);
-
-	//RenderBoneLines((ST_BONE*)m_pRootBone, NULL, &matW);
 }
 
 void cSkinnedMesh::SetupSkinnedMesh(ST_BONE* pBone)

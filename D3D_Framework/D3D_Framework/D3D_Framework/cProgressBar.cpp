@@ -45,9 +45,9 @@ void cProgressBar::Update()
 
 void cProgressBar::Render()
 {
-	m_pBackBar->Render(m_fStartX, m_fStartY,
+	m_pBackBar->Render(0, 0,
 		m_pBackBar->GetWidth(), m_pBackBar->GetHeight());
 
-	m_pFrontBar->Render(m_fStartX, m_fStartY,
+	m_pFrontBar->Render(0, 0,
 		m_fWidth, m_fHeight);
 }

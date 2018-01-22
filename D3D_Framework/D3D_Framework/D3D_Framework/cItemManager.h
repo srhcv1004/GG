@@ -23,6 +23,7 @@ private:
 
 private:
 	void LoadXItem();
+	void LoadXHead();
 	void LoadXBody();
 	void LoadXHand();
 	void LoadXLeg();

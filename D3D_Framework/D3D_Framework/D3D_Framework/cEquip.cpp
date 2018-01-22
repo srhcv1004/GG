@@ -49,8 +49,36 @@ void cEquip::Render()
 
 	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
 	{
-		if (m_vecSkinnedPlayer[i])
-			m_vecSkinnedPlayer[i]->Render();
+		if (i == 0)
+		{
+			//D3DXMATRIXA16 matWorld, matR;
+			//ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
+
+			//ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Head");
+
+			//D3DXMatrixRotationYawPitchRoll(&matR, D3DX_PI / 2.F, 0.F, D3DX_PI / 2.F);
+
+			//matWorld = matR;
+			//if (pFindBone)
+			//{
+			//	matWorld *= pFindBone->matWorldTM;
+			//}
+
+			//D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
+
+			if (m_vecSkinnedPlayer[i])
+				m_vecSkinnedPlayer[i]->Render();
+		}
+		else
+		{
+			D3DXMATRIXA16 matWorld;
+			D3DXMatrixIdentity(&matWorld);
+
+			D_DEVICE->SetTransform(D3DTS_WORLD, &matWorld);
+
+			if (m_vecSkinnedPlayer[i])
+				m_vecSkinnedPlayer[i]->Render();
+		}
 	}
 }
 
@@ -59,10 +87,10 @@ void cEquip::SetupParts()
 	m_vecSkinnedPlayer.resize(E_PARTS_END);
 
 	// Head parts
-	//cSkinnedMesh* pHand = new cSkinnedMesh();
-	//pHand->Setup("XFile/XPlayer", "1.x");
-	//pHand->SetMatWorldPtr(&m_matWorldTM);
-	//m_vecSkinnedPlayer[E_PARTS_HEAD] = pHand;
+	cSkinnedMesh* pHead = new cSkinnedMesh();
+	pHead->Setup("XFile/XItem", "[0]Head.x");
+	m_vecSkinnedPlayer[E_PARTS_HEAD] = pHead;
+	m_vecSkinnedPlayer[E_PARTS_HEAD]->SetMatWorldPtr(m_pXPlayerWorldTM);
 
 	// Body parts
 	cXItem* pXBody = 

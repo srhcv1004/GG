@@ -22,6 +22,7 @@ private:
 
 private:
 	D3DXMATRIXA16*											m_pXPlayerWorldTM;
+	D3DXMATRIXA16*											m_pXHeadWorldTM;
 
 private:
 	E_PARTS													m_eChangePartKind;
@@ -46,6 +47,8 @@ public:
 	void Release();
 	void Update();
 	void Render();
+
+	void SetUpLocalPos(ST_BONE* pRootBone);
 
 	void ConnectXPlayerAnimation(cXPlayerAnimation* pXPlayerAnimation) 
 	{ m_pXPlayerAnimation = pXPlayerAnimation; }

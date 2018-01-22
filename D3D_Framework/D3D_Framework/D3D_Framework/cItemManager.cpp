@@ -35,9 +35,34 @@ void cItemManager::Release()
 
 void cItemManager::LoadXItem()
 {
+	this->LoadXHead();
 	this->LoadXBody();
 	this->LoadXHand();
 	this->LoadXLeg();
+}
+
+void cItemManager::LoadXHead()
+{
+	FILE* pFile = NULL;
+	errno_t errNo = fopen_s(&pFile, "XFile/XItem/XHead.txt", "rt");
+
+	DWORD dwItemKey = 0;
+	DWORD dwItemCount = 0;
+	CHAR szFolderName[256] = "";
+	CHAR szFileName[256] = "";
+
+	fscanf_s(pFile, "ItemCount = %d\n", &dwItemCount);
+	for (DWORD i = 0; i < dwItemCount; i++)
+	{
+		fscanf_s(pFile, "[%d]\t %s\t %s\n", &dwItemKey, szFileName, 256, szFolderName, 256);
+
+		cXItem* pItem = new cXItem();
+		pItem->Setup(szFolderName, szFileName);
+
+		m_mapXItem[E_PARTS_HEAD].insert(std::make_pair(dwItemKey, pItem));
+	}
+
+	fclose(pFile);
 }
 
 void cItemManager::LoadXBody()
