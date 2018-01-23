@@ -12,21 +12,21 @@ cParticle::~cParticle()
 
 void cParticle::Setup(const CHAR* pTextureFileName, int nVecSize, E_SETUP_KIND eKind)
 {
-	D3DXCreateTextureFromFile(D_DEVICE, pTextureFileName, &m_pTexture);
-	//D3DXCreateTextureFromFileEx(D_DEVICE,
-	//	pTextureFileName,
-	//	D3DX_DEFAULT_NONPOW2,
-	//	D3DX_DEFAULT_NONPOW2,
-	//	D3DX_DEFAULT,
-	//	0,
-	//	D3DFMT_UNKNOWN,
-	//	D3DPOOL_MANAGED,
-	//	D3DX_FILTER_NONE,
-	//	D3DX_DEFAULT,
-	//	D3DCOLOR_XRGB(0, 0, 0),
-	//	NULL,
-	//	NULL,
-	//	&m_pTexture);
+	//D3DXCreateTextureFromFile(D_DEVICE, pTextureFileName, &m_pTexture);
+	D3DXCreateTextureFromFileEx(D_DEVICE,
+		pTextureFileName,
+		D3DX_DEFAULT_NONPOW2,
+		D3DX_DEFAULT_NONPOW2,
+		D3DX_DEFAULT,
+		0,
+		D3DFMT_UNKNOWN,
+		D3DPOOL_MANAGED,
+		D3DX_FILTER_NONE,
+		D3DX_DEFAULT,
+		D3DCOLOR_XRGB(255, 255, 255),
+		NULL,
+		NULL,
+		&m_pTexture);
 
 	m_vecPaticle.resize(nVecSize);
 
@@ -84,12 +84,12 @@ void cParticle::Setup(const CHAR* pTextureFileName, int nVecSize, E_SETUP_KIND e
 	D_DEVICE->SetRenderState(D3DRS_POINTSCALEENABLE, true);
 
 	D_DEVICE->SetRenderState(D3DRS_POINTSCALE_A, FtoDw(0.0f));
-	D_DEVICE->SetRenderState(D3DRS_POINTSCALE_B, FtoDw(2.5f));
-	D_DEVICE->SetRenderState(D3DRS_POINTSCALE_C, FtoDw(5.0f));
+	D_DEVICE->SetRenderState(D3DRS_POINTSCALE_B, FtoDw(0.0f));
+	D_DEVICE->SetRenderState(D3DRS_POINTSCALE_C, FtoDw(1.0f));
 
-	D_DEVICE->SetRenderState(D3DRS_POINTSIZE, FtoDw(50.0f));
+	D_DEVICE->SetRenderState(D3DRS_POINTSIZE, FtoDw(10.0f));
 	D_DEVICE->SetRenderState(D3DRS_POINTSIZE_MIN, FtoDw(0.2f));
-	D_DEVICE->SetRenderState(D3DRS_POINTSIZE_MAX, FtoDw(100.f));
+	D_DEVICE->SetRenderState(D3DRS_POINTSIZE_MAX, FtoDw(20.f));
 
 	D_DEVICE->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 	D_DEVICE->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
@@ -169,7 +169,4 @@ void cParticle::Render()
 	D_DEVICE->SetRenderState(D3DRS_LIGHTING, true);
 	D_DEVICE->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
 	D_DEVICE->SetRenderState(D3DRS_ZWRITEENABLE, false);
-
-	D_DEVICE->SetRenderState(D3DRS_POINTSPRITEENABLE, false);
-	D_DEVICE->SetRenderState(D3DRS_POINTSCALEENABLE, false);
 }

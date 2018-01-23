@@ -1,4 +1,4 @@
-ItemCount = 22
+ItemCount = 2
 [0]	[0]Hand.X	XFile/XItem/Hand	
 [1]	[1]Hand.X	XFile/XItem/Hand
 [2]	[2]Hand.X	XFile/XItem/Hand

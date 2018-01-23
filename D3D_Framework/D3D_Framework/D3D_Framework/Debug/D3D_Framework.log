@@ -1,3 +1,3 @@
-﻿  cParticle.cpp
-  D3D_Framework.vcxproj -> C:\Users\p35\Documents\GitHub\GG\D3D_Framework\D3D_Framework\Debug\D3D_Framework.exe
-  D3D_Framework.vcxproj -> C:\Users\p35\Documents\GitHub\GG\D3D_Framework\D3D_Framework\Debug\D3D_Framework.pdb (Partial PDB)
+﻿  cXPlayer.cpp
+c:\users\이영주\documents\github\gg\d3d_framework\d3d_framework\d3d_framework\cxplayer.cpp(23): warning C4316: 'cEquip': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  D3D_Framework.vcxproj -> C:\Users\이영주\Documents\GitHub\GG\D3D_Framework\D3D_Framework\Debug\D3D_Framework.exe

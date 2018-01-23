@@ -1,4 +1,4 @@
-ItemCount = 28
+ItemCount = 2
 [0]	[0]Hair.x	XFile/XItem/Hair
 [1]	[1]Hair.x	XFile/XItem/Hair
 [2]	[2]Hair.x	XFile/XItem/Hair

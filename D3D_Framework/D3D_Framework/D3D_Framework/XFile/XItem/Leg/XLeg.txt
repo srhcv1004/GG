@@ -1,4 +1,4 @@
-ItemCount = 22
+ItemCount = 2
 [0]	[0]Leg.X	XFile/XItem/Leg	
 [1]	[1]Leg.X	XFile/XItem/Leg
 [2]	[2]Leg.X	XFile/XItem/Leg

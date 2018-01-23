@@ -1,2 +1,0 @@
-ItemCount = 1
-[0]	[0]Hair.x	XFile/XItem

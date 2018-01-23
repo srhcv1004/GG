@@ -1,4 +1,4 @@
-ItemCount = 22
+ItemCount = 2
 [0]	[0]Body.x	XFile/XItem/Body
 [1]	[1]Body.x	XFile/XItem/Body
 [2]	[2]Body.x	XFile/XItem/Body

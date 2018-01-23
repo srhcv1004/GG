@@ -22,9 +22,9 @@ void cEquip::Setup(D3DXMATRIXA16* pXPlayerWorldTM)
 	m_pXPlayerWorldTM = pXPlayerWorldTM;
 
 	m_arChangePartsNum[E_PARTS_HEAD] = 0;
-	m_arChangePartsNum[E_PARTS_BODY] = 17;
-	m_arChangePartsNum[E_PARTS_HAND] = 17;
-	m_arChangePartsNum[E_PARTS_LEG] = 17;
+	m_arChangePartsNum[E_PARTS_BODY] = 0;
+	m_arChangePartsNum[E_PARTS_HAND] = 0;
+	m_arChangePartsNum[E_PARTS_LEG] = 0;
 	m_arChangePartsNum[E_PARTS_HAIR] = 0;
 
 	this->SetupParts();

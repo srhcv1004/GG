@@ -1,6 +1,0 @@
-ItemCount = 2
-[0]	[0]Leg.X	XFile/XItem	
-[1]	[1]Leg.X	XFile/XItem
-
-
-

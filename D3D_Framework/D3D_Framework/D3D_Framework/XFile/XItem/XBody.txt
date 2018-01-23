@@ -1,8 +1,0 @@
-ItemCount = 2
-[0]	[0]Body.x	XFile/XItem
-[1]	[1]Body.x	XFile/XItem
-
-
-
-
-	
