@@ -23,7 +23,7 @@
     <ProjectGuid>{C8018301-02FC-4D6B-9C65-573989B98208}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>D3DFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -205,6 +205,7 @@
     <ClInclude Include="cCubeManPlayer.h" />
     <ClInclude Include="cOption.h" />
     <ClInclude Include="cOptionUI.h" />
+    <ClInclude Include="cParticle.h" />
     <ClInclude Include="cProgressBar.h" />
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cRectTile.h" />
@@ -282,6 +283,7 @@
     <ClCompile Include="cObjLoadManager.cpp" />
     <ClCompile Include="cOption.cpp" />
     <ClCompile Include="cOptionUI.cpp" />
+    <ClCompile Include="cParticle.cpp" />
     <ClCompile Include="cProgressBar.cpp" />
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cRectTile.cpp" />

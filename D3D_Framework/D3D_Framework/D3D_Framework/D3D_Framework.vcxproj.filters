@@ -262,6 +262,9 @@
     <Filter Include="소스 파일\cMainGame\cMap\cMapCave">
       <UniqueIdentifier>{9122340b-e98e-4bcc-9729-c7a88a840f5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3DGameFramework\cParticle">
+      <UniqueIdentifier>{405d10d6-fe1b-4c93-adce-b7abeb64ca8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -504,6 +507,9 @@
     <ClInclude Include="cMap.h">
       <Filter>소스 파일\cMainGame\cMap</Filter>
     </ClInclude>
+    <ClInclude Include="cParticle.h">
+      <Filter>D3DGameFramework\cParticle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -721,6 +727,9 @@
     </ClCompile>
     <ClCompile Include="cMap.cpp">
       <Filter>소스 파일\cMainGame\cMap</Filter>
+    </ClCompile>
+    <ClCompile Include="cParticle.cpp">
+      <Filter>D3DGameFramework\cParticle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

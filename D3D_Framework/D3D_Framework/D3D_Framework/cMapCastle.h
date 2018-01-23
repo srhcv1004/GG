@@ -3,12 +3,15 @@
 #include "cMap.h"
 
 class iGrid;
+class cParticle;
 
 class cMapCastle : public cMap
 {
 private:
 	iGrid*													m_pLineGrid;
-	cSkinnedMesh*											m_pWeaponTest;
+
+private:
+	cParticle*												m_pParticle;
 
 private:
 	void ChangeWorldMapScene();

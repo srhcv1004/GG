@@ -48,6 +48,11 @@ inline void LineDraw(HDC hdc, int nMoveX, int nMoveY, int nLineX, int nLineY)
 	LineTo(hdc, nLineX, nLineY);
 }
 
+inline DWORD FtoDw(float f)
+{
+	return *((DWORD*)&f);
+}
+
 inline void UpdateMatWorldTM(ST_BONE* pBone, D3DXMATRIXA16* pMatParentWorldTM)
 {
 	if (!pBone) return;

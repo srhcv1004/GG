@@ -58,6 +58,8 @@ void cXPlayer::Update()
 
 void cXPlayer::Render()
 {
+	D_DEVICE->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+
 	if (m_pEquip)
 		m_pEquip->Render();
 

@@ -22,6 +22,7 @@ private:
 private:
 	mapXItem												m_mapXItem[E_PARTS_END];
 
+
 private:
 	void LoadXItem();
 	void LoadXHead();

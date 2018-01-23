@@ -53,35 +53,14 @@ void cEquip::Update()
 
 void cEquip::Render()
 {
-<<<<<<< HEAD
 	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
-=======
->>>>>>> 0f2ac7118d51c54005fc3acb7dc25d6823ddcf35
 	this->RenderChangeKind();
 
 	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
 
 	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
 	{
-<<<<<<< HEAD
-		if (i == 0)
-		{
-			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
-			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
-
-			m_matXHeadWorldTM = pFindBone->matWorldTM;
-			//D_DEVICE->SetTransform(D3DTS_WORLD, &pFindBone->matWorldTM);
-
-			if (m_vecSkinnedPlayer[i])
-				m_vecSkinnedPlayer[i]->Render();
-		}
-		else if (i == 4)
-		{
-			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
-			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
-=======
 		if (!m_vecSkinnedPlayer[i]) continue;
->>>>>>> 0f2ac7118d51c54005fc3acb7dc25d6823ddcf35
 
 		ST_BONE* pBoneBody = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
 		ST_BONE* pFindBoneBody = (ST_BONE*)D3DXFrameFind(pBoneBody, "Bip01-Neck");
@@ -194,14 +173,14 @@ void cEquip::RenderChangeKind()
 
 	D_FONTMANAGER->DrawFontText("TimerFont", str,
 		NULL,
-		RectMake(D_WINSIZEX / 2, D_WINSIZEY / 2, 0, 0),
+		RectMake(D_WINSIZEX / 2 - 150, D_WINSIZEY / 2 - 10, 0, 0),
 		D3DCOLOR_XRGB(255, 255, 255));
 
 	sprintf_s(str, "[%d번 아이템]", m_arChangePartsNum[m_eChangePartKind]);
 	
 	D_FONTMANAGER->DrawFontText("TimerFont", str,
 		NULL,
-		RectMake(D_WINSIZEX / 2, D_WINSIZEY / 2 + 20, 0, 0),
+		RectMake(D_WINSIZEX / 2 - 150, D_WINSIZEY / 2 + 10, 0, 0),
 		D3DCOLOR_XRGB(255, 255, 255));
 }
 
