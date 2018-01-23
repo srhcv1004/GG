@@ -16,6 +16,8 @@ cMapCastle::~cMapCastle()
 
 void cMapCastle::Setup()
 {
+	cMap::Setup();
+
 	m_pLineGrid = new cLineGrid();
 	m_pLineGrid->Setup();
 
@@ -28,17 +30,16 @@ void cMapCastle::Setup()
 
 void cMapCastle::Release()
 {
-	D_SAFE_DELETE(m_pCamera);
+	cMap::Release();
 
 	D_SAFE_RELEASE(m_pLineGrid);
 	D_SAFE_DELETE(m_pLineGrid);
-
-	D_SAFE_RELEASE(m_pPlayer);
-	D_SAFE_DELETE(m_pPlayer);
 }
 
 void cMapCastle::Update()
 {
+	cMap::Update();
+
 	if (m_pCamera)
 		m_pCamera->Update();
 
@@ -53,6 +54,8 @@ void cMapCastle::Update()
 
 void cMapCastle::Render()
 {
+	cMap::Render();
+
 	if (m_pLineGrid)
 		m_pLineGrid->Render();
 

@@ -11,19 +11,23 @@ cMapCave::~cMapCave()
 
 void cMapCave::Setup()
 {
+	cMap::Setup();
 }
 
 void cMapCave::Release()
 {
+	cMap::Release();
 }
 
 void cMapCave::Update()
 {
+	cMap::Update();
 	this->ChangeWorldMapScene();
 }
 
 void cMapCave::Render()
 {
+	cMap::Render();
 	this->RenderNowMapInfo();
 }
 

@@ -45,7 +45,6 @@ void cEquip::Update()
 void cEquip::Render()
 {
 	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
-
 	this->RenderChangeKind();
 
 	for (size_t i = 0; i < m_vecSkinnedPlayer.size(); i++)
@@ -55,7 +54,8 @@ void cEquip::Render()
 			ST_BONE* pBone = (ST_BONE*)m_vecSkinnedPlayer[E_PARTS_BODY]->GetRootBone();
 			ST_BONE* pFindBone = (ST_BONE*)D3DXFrameFind(pBone, "Bip01-Neck");
 
-			D_DEVICE->SetTransform(D3DTS_WORLD, &pFindBone->matWorldTM);
+			m_matXHeadWorldTM = pFindBone->matWorldTM;
+			//D_DEVICE->SetTransform(D3DTS_WORLD, &pFindBone->matWorldTM);
 
 			if (m_vecSkinnedPlayer[i])
 				m_vecSkinnedPlayer[i]->Render();

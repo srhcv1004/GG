@@ -19,6 +19,10 @@ void cMap::Setup()
 
 void cMap::Release()
 {
+	D_SAFE_DELETE(m_pCamera);
+
+	D_SAFE_RELEASE(m_pPlayer);
+	D_SAFE_DELETE(m_pPlayer);
 }
 
 void cMap::Update()

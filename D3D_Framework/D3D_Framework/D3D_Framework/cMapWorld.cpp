@@ -11,19 +11,25 @@ cMapWorld::~cMapWorld()
 
 void cMapWorld::Setup()
 {
+	cMap::Setup();
 }
 
 void cMapWorld::Release()
 {
+	cMap::Release();
 }
 
 void cMapWorld::Update()
 {
+	cMap::Update();
+
 	this->ChangeWorldMapScene();
 }
 
 void cMapWorld::Render()
 {
+	cMap::Render();
+
 	this->RenderNowMapInfo();
 }
 
