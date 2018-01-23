@@ -8,6 +8,7 @@ class cMapCastle : public cMap
 {
 private:
 	iGrid*													m_pLineGrid;
+	cSkinnedMesh*											m_pWeaponTest;
 
 private:
 	void ChangeWorldMapScene();

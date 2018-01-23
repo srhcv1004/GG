@@ -11,7 +11,8 @@ public:
 		E_PARTS_BODY,
 		E_PARTS_HAND,
 		E_PARTS_LEG,
-		E_PARTS_END = 4
+		E_PARTS_HAIR,
+		E_PARTS_END = 5
 	};
 
 private:
@@ -27,6 +28,7 @@ private:
 	void LoadXBody();
 	void LoadXHand();
 	void LoadXLeg();
+	void LoadXHair();
 
 public:
 	cItemManager();
@@ -36,5 +38,6 @@ public:
 	void Release();
 
 	cItem* FindItem(DWORD dwItemKey, cItemManager::E_PARTS eParts);
+	size_t GetMapXItem(cItemManager::E_PARTS eParts) { return m_mapXItem[eParts].size(); }
 };
 

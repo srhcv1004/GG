@@ -1,0 +1,32 @@
+ItemCount = 28
+[0]	[0]Hair.x	XFile/XItem/Hair
+[1]	[1]Hair.x	XFile/XItem/Hair
+[2]	[2]Hair.x	XFile/XItem/Hair
+[3]	[3]Hair.x	XFile/XItem/Hair
+[4]	[4]Hair.x	XFile/XItem/Hair
+[5]	[5]Hair.x	XFile/XItem/Hair
+[6]	[6]Hair.x	XFile/XItem/Hair
+[7]	[7]Hair.x	XFile/XItem/Hair
+[8]	[8]Hair.x	XFile/XItem/Hair
+[9]	[9]Hair.x	XFile/XItem/Hair
+[10]	[10]Hair.x	XFile/XItem/Hair
+[11]	[11]Hair.x	XFile/XItem/Hair
+[12]	[12]Hair.x	XFile/XItem/Hair
+[13]	[13]Hair.x	XFile/XItem/Hair
+[14]	[14]Hair.x	XFile/XItem/Hair
+[15]	[15]Hair.x	XFile/XItem/Hair
+[16]	[16]Hair.x	XFile/XItem/Hair
+[17]	[17]Hair.x	XFile/XItem/Hair
+[18]	[18]Hair.x	XFile/XItem/Hair
+[19]	[19]Hair.x	XFile/XItem/Hair
+[20]	[20]Hair.x	XFile/XItem/Hair
+[21]	[21]Hair.x	XFile/XItem/Hair
+[22]	[22]Hair.x	XFile/XItem/Hair
+[23]	[23]Hair.x	XFile/XItem/Hair
+[24]	[24]Hair.x	XFile/XItem/Hair
+[25]	[25]Hair.x	XFile/XItem/Hair
+[26]	[26]Hair.x	XFile/XItem/Hair
+[27]	[27]Hair.x	XFile/XItem/Hair
+
+
+

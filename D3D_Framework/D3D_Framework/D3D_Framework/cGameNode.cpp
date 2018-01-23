@@ -36,7 +36,7 @@ void cGameNode::Setup()
 
 	D_TEXMTLMANAGER->Setup();
 
-	D_ITEMMANAGER->Setup();
+	//D_ITEMMANAGER->Setup();
 	// ----------------------------------------------------------------------------------------------------
 }
 

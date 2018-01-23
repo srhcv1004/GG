@@ -52,8 +52,11 @@ inline void UpdateMatWorldTM(ST_BONE* pBone, D3DXMATRIXA16* pMatParentWorldTM)
 {
 	if (!pBone) return;
 
-	D3DXMatrixMultiply(&pBone->matWorldTM,
-		&pBone->TransformationMatrix, pMatParentWorldTM);
+	if (pMatParentWorldTM)
+	{
+		D3DXMatrixMultiply(&pBone->matWorldTM,
+			&pBone->TransformationMatrix, pMatParentWorldTM);
+	}
 
 	if (pBone->pFrameSibling)
 	{

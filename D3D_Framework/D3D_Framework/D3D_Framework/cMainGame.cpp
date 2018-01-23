@@ -45,8 +45,7 @@ void cMainGame::Render()
 	D_TIMEMANAGER->Render();
 
 	D_DEVICE->BeginScene();
-	
-	D_DEVICE->SetRenderState(D3DRS_LIGHTING, FALSE);
+
 	D_SCENEMANAGER->Render();
 
 	D_DEVICE->EndScene();

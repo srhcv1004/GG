@@ -134,6 +134,9 @@ void cXPlayerAnimation::StopSkillAnimation()
 			LPD3DXANIMATIONSET pAniSet = NULL;
 
 			pAniCtrl = vecSkinnedMesh[i]->GetAnimationController();
+
+			if (!pAniCtrl) continue;
+
 			pAniCtrl->GetAnimationSet((*m_pCurState), &pAniSet);
 
 			DOUBLE dPeriodTime = pAniSet->GetPeriod();
